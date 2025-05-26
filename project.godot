@@ -11,13 +11,24 @@ config_version=5
 [application]
 
 config/name="Ass. Task 3"
+run/main_scene="res://Main Menu/main_menu_scene.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1080
+window/size/viewport_height=1920
+window/stretch/mode="viewport"
 
 [editor]
 
 version_control/plugin_name="GitPlugin"
 version_control/autoload_on_startup=true
+
+[layer_names]
+
+2d_physics/size/viewport_height=648
 
 [rendering]
 

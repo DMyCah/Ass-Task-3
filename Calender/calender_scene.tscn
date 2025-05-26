@@ -1,0 +1,39 @@
+[gd_scene load_steps=4 format=3 uid="uid://8f55gutq8uvi"]
+
+[ext_resource type="Script" path="res://Calender/calender_scene.gd" id="1_h6uve"]
+[ext_resource type="PackedScene" uid="uid://dkpt7hvywnb3y" path="res://back_button_test.tscn" id="1_w1svd"]
+
+[sub_resource type="Theme" id="Theme_cphmm"]
+Label/font_sizes/font_size = 100
+
+[node name="Calender_Scene" type="Node2D"]
+script = ExtResource("1_h6uve")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -308.5
+offset_right = 308.5
+offset_bottom = 137.0
+grow_horizontal = 2
+theme = SubResource("Theme_cphmm")
+text = "Calender Scene"
+metadata/_edit_use_anchors_ = true
+
+[node name="Back_Button_Test" parent="CanvasLayer" instance=ExtResource("1_w1svd")]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+grow_vertical = 0

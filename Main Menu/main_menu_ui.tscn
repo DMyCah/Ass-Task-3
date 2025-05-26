@@ -1,0 +1,82 @@
+[gd_scene load_steps=6 format=3 uid="uid://drgi0ijit7jh6"]
+
+[ext_resource type="Script" path="res://Main Menu/main_menu_ui.gd" id="1_ur10r"]
+[ext_resource type="Texture2D" uid="uid://bo5e8i4ls5v02" path="res://Untitled_Artwork 4.png" id="1_ve851"]
+
+[sub_resource type="Theme" id="Theme_o4p5i"]
+default_font_size = 100
+VBoxContainer/constants/separation = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fk2nb"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="Theme" id="Theme_p5mmt"]
+Button/styles/normal = SubResource("StyleBoxFlat_fk2nb")
+
+[node name="Main Menu UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ur10r")
+
+[node name="Buttons_Centering_Container" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Buttons_Container" type="VBoxContainer" parent="Buttons_Centering_Container"]
+custom_minimum_size = Vector2(800, 800)
+layout_mode = 2
+theme = SubResource("Theme_o4p5i")
+
+[node name="Memo_Button" type="Button" parent="Buttons_Centering_Container/Buttons_Container"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Memo"
+
+[node name="Calender_Button" type="Button" parent="Buttons_Centering_Container/Buttons_Container"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Calender"
+
+[node name="Timer_Button" type="Button" parent="Buttons_Centering_Container/Buttons_Container"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Timer"
+
+[node name="Game_Button" type="Button" parent="Buttons_Centering_Container/Buttons_Container"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Game"
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.019
+anchor_top = 0.01
+anchor_right = 0.211
+anchor_bottom = 0.119
+offset_left = -0.520001
+offset_top = 0.799999
+offset_right = -228.32
+offset_bottom = -227.84
+
+[node name="Settings_Button" type="Button" parent="CenterContainer"]
+layout_mode = 2
+theme = SubResource("Theme_p5mmt")
+icon = ExtResource("1_ve851")
+
+[connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Memo_Button" to="." method="_on_memo_button_pressed"]
+[connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Memo_Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Calender_Button" to="." method="_on_calender_button_pressed"]
+[connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Timer_Button" to="." method="_on_timer_button_pressed"]
+[connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Game_Button" to="." method="_on_game_button_pressed"]
+[connection signal="pressed" from="CenterContainer/Settings_Button" to="." method="_on_settings_button_pressed"]
