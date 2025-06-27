@@ -74,8 +74,8 @@ layout_mode = 2
 theme = SubResource("Theme_p5mmt")
 icon = ExtResource("1_ve851")
 
-[connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Memo_Button" to="." method="_on_memo_button_pressed"]
 [connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Memo_Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Memo_Button" to="." method="_on_memo_button_pressed"]
 [connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Calender_Button" to="." method="_on_calender_button_pressed"]
 [connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Timer_Button" to="." method="_on_timer_button_pressed"]
 [connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Game_Button" to="." method="_on_game_button_pressed"]

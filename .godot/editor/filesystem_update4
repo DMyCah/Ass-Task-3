@@ -1,8 +1,8 @@
-res://Main Menu/main_menu_scene.tscn
-res://Main Menu/main_menu_ui.tscn
-res://back_button_test.tscn
-res://Calender/calender_scene.tscn
-res://Game/game_scene.tscn
-res://Memo/memo_scene.tscn
-res://Setting/settings_scene.tscn
 res://Timer/timer_scene.tscn
+res://Timer/Timer.gd
+res://Timer/timer_settings.tscn
+res://Timer/Timer Settings/time_slots.tscn
+res://Timer/timer_settings.gd
+res://Timer/timer_scene.gd
+res://Timer/Timer_Display.gd
+res://Timer/Timer Settings/Time_Slots.gd

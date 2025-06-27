@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpnid0qnob4p8"]
+
+[ext_resource type="Script" path="res://Timer/Timer Settings/Time_Slots.gd" id="1_kqhjj"]
+
+[node name="Time_Slots" type="LineEdit"]
+offset_right = 101.0
+offset_bottom = 118.0
+theme_override_constants/minimum_character_width = 0
+theme_override_font_sizes/font_size = 80
+text = "00"
+placeholder_text = "00"
+alignment = 2
+max_length = 2
+expand_to_text_length = true
+script = ExtResource("1_kqhjj")
+
+[connection signal="text_submitted" from="." to="." method="_on_text_submitted"]
