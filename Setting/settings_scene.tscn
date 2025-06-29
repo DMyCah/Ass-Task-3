@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://beuo5ctax211p"]
+[gd_scene load_steps=4 format=3 uid="uid://beuo5ctax211p"]
 
-[ext_resource type="PackedScene" uid="uid://dkpt7hvywnb3y" path="res://back_button_test.tscn" id="1_r6lpx"]
+[ext_resource type="PackedScene" uid="uid://coxax4yxcvi2g" path="res://UI/scene_changer.tscn" id="1_10wqp"]
+[ext_resource type="Script" path="res://Setting/settings_scene.gd" id="1_imv0h"]
 
 [sub_resource type="Theme" id="Theme_n1cxc"]
 Label/font_sizes/font_size = 100
 
 [node name="Settings_Scene" type="Node2D"]
+script = ExtResource("1_imv0h")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -30,8 +32,4 @@ theme = SubResource("Theme_n1cxc")
 text = "Settings Scene"
 metadata/_edit_use_anchors_ = true
 
-[node name="Back_Button_Test" parent="CanvasLayer" instance=ExtResource("1_r6lpx")]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-grow_vertical = 0
+[node name="Scene_Changer" parent="CanvasLayer" instance=ExtResource("1_10wqp")]

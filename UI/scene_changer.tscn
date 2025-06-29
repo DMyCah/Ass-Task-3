@@ -1,0 +1,94 @@
+[gd_scene load_steps=9 format=3 uid="uid://coxax4yxcvi2g"]
+
+[ext_resource type="Script" path="res://UI/scene_changer.gd" id="1_dlejp"]
+[ext_resource type="Texture2D" uid="uid://bahu5ws36knvt" path="res://Assets/Button/Settings.png" id="2_aiwyt"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_i4fpu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vxoql"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rbmel"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h62dl"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cyf18"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xtlpe"]
+
+[node name="Scene_Changer" type="Control"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_dlejp")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 100)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="Timer" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_i4fpu")
+text = "Timer"
+
+[node name="Ducks" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+toggle_mode = true
+button_group = SubResource("ButtonGroup_i4fpu")
+text = "Ducks"
+
+[node name="Button3" type="Button" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_group = SubResource("ButtonGroup_i4fpu")
+
+[node name="Button4" type="Button" parent="HBoxContainer"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+button_group = SubResource("ButtonGroup_i4fpu")
+
+[node name="Settings_Button" type="Button" parent="."]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = -1900.0
+offset_right = 1047.0
+offset_bottom = -876.0
+grow_vertical = 0
+scale = Vector2(0.146, 0.146)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_vxoql")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_rbmel")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_h62dl")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_cyf18")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xtlpe")
+icon = ExtResource("2_aiwyt")
+
+[connection signal="pressed" from="HBoxContainer/Timer" to="." method="_on_timer_pressed"]
+[connection signal="pressed" from="HBoxContainer/Ducks" to="." method="_on_ducks_pressed"]
+[connection signal="pressed" from="Settings_Button" to="." method="_on_settings_button_pressed"]

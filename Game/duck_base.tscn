@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://cveodrtbufiop"]
+
+[ext_resource type="Script" path="res://Game/duck_base.gd" id="1_gxp8o"]
+[ext_resource type="Texture2D" uid="uid://bjvi3w5alj20e" path="res://Assets/Bodies/YellowDuck.png" id="2_xr88d"]
+[ext_resource type="Script" path="res://Game/Headwear.gd" id="4_g7d2k"]
+[ext_resource type="Script" path="res://Game/Eyewear.gd" id="6_2bq17"]
+[ext_resource type="Script" path="res://Game/Neckwear.gd" id="8_f8rpk"]
+[ext_resource type="Script" path="res://Game/FullBodyWear.gd" id="9_hjhie"]
+[ext_resource type="Script" path="res://Game/Footwear.gd" id="10_ytagn"]
+[ext_resource type="Script" path="res://Game/Wingwear.gd" id="11_lsl3g"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y8bt1"]
+radius = 100.0
+
+[node name="Duck_Base" type="CharacterBody2D"]
+position = Vector2(289, 160)
+script = ExtResource("1_gxp8o")
+
+[node name="DuckCollisionShape" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_y8bt1")
+
+[node name="Body" type="Sprite2D" parent="."]
+scale = Vector2(0.143, 0.143)
+texture = ExtResource("2_xr88d")
+
+[node name="Headwear" type="Sprite2D" parent="."]
+scale = Vector2(0.143, 0.143)
+script = ExtResource("4_g7d2k")
+
+[node name="Eyewear" type="Sprite2D" parent="."]
+scale = Vector2(0.143, 0.143)
+script = ExtResource("6_2bq17")
+
+[node name="Neckwear" type="Sprite2D" parent="."]
+scale = Vector2(0.143, 0.143)
+script = ExtResource("8_f8rpk")
+
+[node name="FullBodywear" type="Sprite2D" parent="."]
+scale = Vector2(0.143, 0.143)
+script = ExtResource("9_hjhie")
+
+[node name="Wingwear" type="Sprite2D" parent="."]
+scale = Vector2(0.143, 0.143)
+script = ExtResource("11_lsl3g")
+
+[node name="Footwear" type="Sprite2D" parent="."]
+scale = Vector2(0.143, 0.143)
+script = ExtResource("10_ytagn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

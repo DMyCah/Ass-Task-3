@@ -1,8 +1,13 @@
-res://Timer/timer_scene.tscn
-res://Timer/Timer.gd
-res://Timer/timer_settings.tscn
-res://Timer/Timer Settings/time_slots.tscn
-res://Timer/timer_settings.gd
-res://Timer/timer_scene.gd
-res://Timer/Timer_Display.gd
-res://Timer/Timer Settings/Time_Slots.gd
+res://Game/duck_base.tscn
+res://Game/duck_base.gd
+res://Game/game_wardrobe_scene.tscn
+res://UI/scene_changer.tscn
+res://Game/game_inventory_scene.tscn
+res://Game/game_collection_scene.tscn
+res://Main Menu/main_menu_ui.tscn
+res://Main Menu/main_menu_scene.tscn
+res://Game/Wardrobe_Menu.gd
+res://Game/game_wardrobe_scene.gd
+res://Globals.gd
+res://Game/Button.gd
+res://Game/Headwear.gd

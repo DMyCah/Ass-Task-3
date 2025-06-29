@@ -1,17 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://drgi0ijit7jh6"]
+[gd_scene load_steps=7 format=3 uid="uid://drgi0ijit7jh6"]
 
 [ext_resource type="Script" path="res://Main Menu/main_menu_ui.gd" id="1_ur10r"]
-[ext_resource type="Texture2D" uid="uid://bo5e8i4ls5v02" path="res://Untitled_Artwork 4.png" id="1_ve851"]
+[ext_resource type="Texture2D" uid="uid://bahu5ws36knvt" path="res://Assets/Button/Settings.png" id="2_sy23k"]
 
 [sub_resource type="Theme" id="Theme_o4p5i"]
 default_font_size = 100
 VBoxContainer/constants/separation = 50
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fk2nb"]
-bg_color = Color(0.6, 0.6, 0.6, 0)
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gg2vm"]
 
-[sub_resource type="Theme" id="Theme_p5mmt"]
-Button/styles/normal = SubResource("StyleBoxFlat_fk2nb")
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wb5fw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ncumm"]
 
 [node name="Main Menu UI" type="Control"]
 layout_mode = 3
@@ -38,11 +38,13 @@ layout_mode = 2
 theme = SubResource("Theme_o4p5i")
 
 [node name="Memo_Button" type="Button" parent="Buttons_Centering_Container/Buttons_Container"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 text = "Memo"
 
 [node name="Calender_Button" type="Button" parent="Buttons_Centering_Container/Buttons_Container"]
+visible = false
 layout_mode = 2
 size_flags_vertical = 3
 text = "Calender"
@@ -66,16 +68,21 @@ anchor_right = 0.211
 anchor_bottom = 0.119
 offset_left = -0.520001
 offset_top = 0.799999
-offset_right = -228.32
-offset_bottom = -227.84
+offset_right = 819.12
+offset_bottom = 815.52
+scale = Vector2(0.146, 0.146)
 
 [node name="Settings_Button" type="Button" parent="CenterContainer"]
+custom_minimum_size = Vector2(150, 150)
 layout_mode = 2
-theme = SubResource("Theme_p5mmt")
-icon = ExtResource("1_ve851")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gg2vm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wb5fw")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ncumm")
+icon = ExtResource("2_sy23k")
 
-[connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Memo_Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Memo_Button" to="." method="_on_memo_button_pressed"]
+[connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Memo_Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Calender_Button" to="." method="_on_calender_button_pressed"]
 [connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Timer_Button" to="." method="_on_timer_button_pressed"]
 [connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Game_Button" to="." method="_on_game_button_pressed"]

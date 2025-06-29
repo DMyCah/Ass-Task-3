@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmc7bjuwnapv"]
+
+[ext_resource type="Script" path="res://Game/game_menu_bar.gd" id="1_7geo8"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_tqgu2"]
+
+[node name="Game_Menu_Bar" type="Control"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -1080.0
+offset_right = -1080.0
+grow_horizontal = 0
+script = ExtResource("1_7geo8")
+
+[node name="Menu_Box" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 930.0
+offset_top = 50.0
+offset_right = 1080.0
+offset_bottom = 500.0
+theme_override_constants/separation = 0
+
+[node name="Collection_Button" type="Button" parent="Menu_Box"]
+layout_mode = 2
+size_flags_vertical = 3
+toggle_mode = true
+button_group = SubResource("ButtonGroup_tqgu2")
+text = "C"
+
+[node name="Inventory_Button" type="Button" parent="Menu_Box"]
+layout_mode = 2
+size_flags_vertical = 3
+toggle_mode = true
+button_group = SubResource("ButtonGroup_tqgu2")
+text = "I"
+
+[node name="Wardrobe_Button" type="Button" parent="Menu_Box"]
+layout_mode = 2
+size_flags_vertical = 3
+toggle_mode = true
+button_group = SubResource("ButtonGroup_tqgu2")
+text = "W"
+
+[node name="Menu_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 930.0
+offset_right = 1080.0
+offset_bottom = 50.0
+toggle_mode = true
+button_pressed = true
+text = "Menu
+"
+
+[connection signal="pressed" from="Menu_Box/Collection_Button" to="." method="_on_collection_button_pressed"]
+[connection signal="pressed" from="Menu_Box/Inventory_Button" to="." method="_on_inventory_button_pressed"]
+[connection signal="pressed" from="Menu_Box/Wardrobe_Button" to="." method="_on_wardrobe_button_pressed"]
+[connection signal="toggled" from="Menu_Button" to="." method="_on_menu_button_toggled"]

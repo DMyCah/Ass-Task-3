@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://t8u6vwhhu2e7"]
+
+[ext_resource type="PackedScene" uid="uid://cmc7bjuwnapv" path="res://Game/game_menu_bar.tscn" id="1_qyr0j"]
+[ext_resource type="PackedScene" uid="uid://coxax4yxcvi2g" path="res://UI/scene_changer.tscn" id="3_6tfau"]
+
+[sub_resource type="Theme" id="Theme_2dxca"]
+Label/font_sizes/font_size = 100
+
+[node name="Game_Inventory_Scene" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Inventory" type="Label" parent="CanvasLayer"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -308.5
+offset_right = 308.5
+offset_bottom = 137.0
+grow_horizontal = 2
+theme = SubResource("Theme_2dxca")
+text = "Inventory
+"
+metadata/_edit_use_anchors_ = true
+
+[node name="Game_Menu_Bar" parent="CanvasLayer" instance=ExtResource("1_qyr0j")]
+
+[node name="Scene_Changer" parent="CanvasLayer" instance=ExtResource("3_6tfau")]

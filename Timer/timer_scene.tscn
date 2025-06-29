@@ -1,13 +1,13 @@
-[gd_scene load_steps=16 format=3 uid="uid://c4ntu0tk2y6px"]
+[gd_scene load_steps=18 format=3 uid="uid://c4ntu0tk2y6px"]
 
-[ext_resource type="PackedScene" uid="uid://dkpt7hvywnb3y" path="res://back_button_test.tscn" id="1_qvq2i"]
 [ext_resource type="Script" path="res://Timer/timer_scene.gd" id="1_t4axc"]
-[ext_resource type="Script" path="res://Timer/timer_settings.gd" id="4_wncmg"]
-[ext_resource type="Script" path="res://Timer/Timer.gd" id="5_0ievb"]
-[ext_resource type="Script" path="res://Timer/Settings.gd" id="5_o5cvx"]
-[ext_resource type="Script" path="res://Timer/Timer_Display.gd" id="6_ionkt"]
+[ext_resource type="PackedScene" uid="uid://coxax4yxcvi2g" path="res://UI/scene_changer.tscn" id="2_2npsy"]
+[ext_resource type="Script" path="res://Timer/Work_Node.gd" id="5_0ievb"]
+[ext_resource type="Script" path="res://Timer/Break_Node.gd" id="6_2aw1q"]
+[ext_resource type="Script" path="res://Timer/Work_Setup_Display.gd" id="6_ionkt"]
 [ext_resource type="PackedScene" uid="uid://cpnid0qnob4p8" path="res://Timer/Timer Settings/time_slots.tscn" id="7_1qcq2"]
-[ext_resource type="Script" path="res://Timer/Break_Display.gd" id="8_k8a8m"]
+[ext_resource type="Script" path="res://Timer/Break_Setup_Display.gd" id="8_k8a8m"]
+[ext_resource type="Script" path="res://Timer/end_confirm_node.gd" id="8_nn460"]
 
 [sub_resource type="Theme" id="Theme_1yq83"]
 Label/font_sizes/font_size = 100
@@ -22,54 +22,59 @@ Button/constants/h_separation = 4
 [sub_resource type="LabelSettings" id="LabelSettings_8jonf"]
 font_size = 100
 
-[sub_resource type="Theme" id="Theme_u8j7e"]
+[sub_resource type="Theme" id="Theme_kx6gu"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_fvxm5"]
-size = Vector2(700, 1200)
+[sub_resource type="ButtonGroup" id="ButtonGroup_7h141"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ciwbr"]
+
+[sub_resource type="Theme" id="Theme_813gp"]
 
 [node name="Timer_Scene" type="Node2D"]
 script = ExtResource("1_t4axc")
 
-[node name="Back_Button_Test" parent="." instance=ExtResource("1_qvq2i")]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = 1920.0
-offset_bottom = 1920.0
-grow_vertical = 0
+[node name="Top_Layer" type="CanvasLayer" parent="."]
+layer = -1
 
-[node name="Label" type="Label" parent="."]
+[node name="TextureRect" type="TextureRect" parent="Top_Layer"]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Top_Layer"]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 231.5
-offset_right = 848.5
+offset_left = -308.5
+offset_right = 308.5
 offset_bottom = 137.0
 grow_horizontal = 2
 theme = SubResource("Theme_1yq83")
 text = "Timer Scene"
 metadata/_edit_use_anchors_ = true
 
-[node name="Timer" type="Control" parent="."]
+[node name="Scene_Changer" parent="Top_Layer" instance=ExtResource("2_2npsy")]
+
+[node name="Work_Node" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("5_0ievb")
 
-[node name="Timer" type="Timer" parent="Timer"]
+[node name="Work_Timer" type="Timer" parent="Work_Node"]
 process_callback = 0
 wait_time = 20.0
 
-[node name="Timer_Label" type="Label" parent="Timer"]
+[node name="Work_Label" type="Label" parent="Work_Node"]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -88,26 +93,46 @@ text = "00:00:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Timer_Display" type="Control" parent="Timer"]
+[node name="Work_Title" type="Label" parent="Work_Node"]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = 540.0
-offset_top = 350.0
-offset_right = 540.0
-offset_bottom = 350.0
+anchor_bottom = 0.5
+offset_left = 399.0
+offset_top = 175.0
+offset_right = 681.0
+offset_bottom = 312.0
 grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "Timer"
+vertical_alignment = 1
+
+[node name="Work_Setup_Display" type="Control" parent="Work_Node"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 540.0
+offset_top = 330.0
+offset_right = 540.0
+offset_bottom = 330.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("6_ionkt")
 
-[node name="Add" type="Button" parent="Timer/Timer_Display"]
+[node name="Add_Work" type="Button" parent="Work_Node/Work_Setup_Display"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 225.0
+offset_left = 210.0
 offset_top = -72.5
-offset_right = 290.0
+offset_right = 267.0
 offset_bottom = 72.5
 grow_vertical = 2
 theme = SubResource("Theme_6jfhn")
@@ -116,16 +141,16 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_x1jeb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_b34mp")
 text = "+"
 
-[node name="Subtract" type="Button" parent="Timer/Timer_Display"]
+[node name="Subtract_Work" type="Button" parent="Work_Node/Work_Setup_Display"]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -279.0
+offset_left = -267.0
 offset_top = -82.5
-offset_right = -225.0
+offset_right = -210.0
 offset_bottom = 62.5
 grow_horizontal = 0
 grow_vertical = 2
@@ -135,7 +160,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_x1jeb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_b34mp")
 text = "-"
 
-[node name="Hours" parent="Timer/Timer_Display" instance=ExtResource("7_1qcq2")]
+[node name="Hours_Work" parent="Work_Node/Work_Setup_Display" instance=ExtResource("7_1qcq2")]
 layout_mode = 1
 anchors_preset = 6
 anchor_left = 1.0
@@ -151,26 +176,25 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxEmpty_x1jeb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_b34mp")
-text = "01"
 
-[node name="Minutes" parent="Timer/Timer_Display" instance=ExtResource("7_1qcq2")]
+[node name="Minutes_Work" parent="Work_Node/Work_Setup_Display" instance=ExtResource("7_1qcq2")]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -50.5
-offset_top = -59.0
-offset_right = 50.5
-offset_bottom = 59.0
+offset_left = -57.5
+offset_top = -68.5
+offset_right = 57.5
+offset_bottom = 68.5
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxEmpty_x1jeb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_b34mp")
 
-[node name="Seconds" parent="Timer/Timer_Display" instance=ExtResource("7_1qcq2")]
+[node name="Seconds_Work" parent="Work_Node/Work_Setup_Display" instance=ExtResource("7_1qcq2")]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -183,8 +207,9 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 100
 theme_override_styles/normal = SubResource("StyleBoxEmpty_x1jeb")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_b34mp")
+text = "03"
 
-[node name="Seperator 1" type="Label" parent="Timer/Timer_Display"]
+[node name="Seperator1_Work" type="Label" parent="Work_Node/Work_Setup_Display"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -201,7 +226,7 @@ text = ":"
 label_settings = SubResource("LabelSettings_8jonf")
 horizontal_alignment = 1
 
-[node name="Seperator 2" type="Label" parent="Timer/Timer_Display"]
+[node name="Seperator2_Work" type="Label" parent="Work_Node/Work_Setup_Display"]
 layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
@@ -215,34 +240,188 @@ text = ":"
 label_settings = SubResource("LabelSettings_8jonf")
 horizontal_alignment = 1
 
-[node name="Timer_Settings_Node" type="Control" parent="."]
+[node name="Break_Node" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 1080.0
-offset_top = 1920.0
-offset_right = 1080.0
-offset_bottom = 1920.0
-grow_horizontal = 0
-grow_vertical = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("6_2aw1q")
 
-[node name="Timer_Settings" type="Button" parent="Timer_Settings_Node"]
+[node name="Break_Timer" type="Timer" parent="Break_Node"]
+process_callback = 0
+wait_time = 20.0
+
+[node name="Break_Label" type="Label" parent="Break_Node"]
+visible = false
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -70.0
-offset_top = -31.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "Settings"
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 342.0
+offset_top = 580.0
+offset_right = 738.0
+offset_bottom = 717.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "00:00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Start" type="Button" parent="."]
+[node name="Break_Title" type="Label" parent="Break_Node"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 399.0
+offset_top = 460.0
+offset_right = 681.0
+offset_bottom = 597.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 100
+text = "Break"
+horizontal_alignment = 1
+
+[node name="Break_Setup_Display" type="Control" parent="Break_Node"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 540.0
+offset_top = 648.0
+offset_right = 540.0
+offset_bottom = 648.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_k8a8m")
+
+[node name="Add_Break" type="Button" parent="Break_Node/Break_Setup_Display"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 210.0
+offset_top = -72.5
+offset_right = 267.0
+offset_bottom = 72.5
+grow_vertical = 2
+theme = SubResource("Theme_6jfhn")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxEmpty_x1jeb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b34mp")
+text = "+"
+
+[node name="Subtract_Break" type="Button" parent="Break_Node/Break_Setup_Display"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -267.0
+offset_top = -82.5
+offset_right = -210.0
+offset_bottom = 62.5
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_6jfhn")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxEmpty_x1jeb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b34mp")
+text = "-"
+
+[node name="Hours_Break" parent="Break_Node/Break_Setup_Display" instance=ExtResource("7_1qcq2")]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -198.0
+offset_top = -72.5
+offset_right = -75.0
+offset_bottom = 72.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxEmpty_x1jeb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b34mp")
+
+[node name="Minutes_Break" parent="Break_Node/Break_Setup_Display" instance=ExtResource("7_1qcq2")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.5
+offset_top = -59.0
+offset_right = 50.5
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxEmpty_x1jeb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b34mp")
+
+[node name="Seconds_Break" parent="Break_Node/Break_Setup_Display" instance=ExtResource("7_1qcq2")]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 75.0
+offset_top = -72.5
+offset_right = 198.0
+offset_bottom = 72.5
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxEmpty_x1jeb")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_b34mp")
+text = "03"
+
+[node name="Seperator1_Break" type="Label" parent="Break_Node/Break_Setup_Display"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -89.0
+offset_top = -74.5
+offset_right = -49.0
+offset_bottom = 62.5
+grow_horizontal = 2
+grow_vertical = 2
+text = ":"
+label_settings = SubResource("LabelSettings_8jonf")
+horizontal_alignment = 1
+
+[node name="Seperator2_Break" type="Label" parent="Break_Node/Break_Setup_Display"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 48.0
+offset_top = -74.5
+offset_right = 88.0
+offset_bottom = 62.5
+grow_vertical = 2
+text = ":"
+label_settings = SubResource("LabelSettings_8jonf")
+horizontal_alignment = 1
+
+[node name="Start_Button" type="Button" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -257,150 +436,151 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 100
 text = "Start"
 
-[node name="Timer_Settings" type="Control" parent="."]
+[node name="Normal_Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 440.0
+offset_top = 50.0
+offset_right = 540.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_kx6gu")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_7h141")
+text = "N"
+
+[node name="Pomodoro_Button" type="Button" parent="."]
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 540.0
+offset_top = 50.0
+offset_right = 640.0
+offset_bottom = 150.0
+grow_vertical = 2
+toggle_mode = true
+text = "P"
+
+[node name="Pause_Button" type="Button" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 391.0
+offset_top = 1200.0
+offset_right = 689.0
+offset_bottom = 1345.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "Pause"
+
+[node name="End_Button" type="Button" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 445.5
+offset_top = 1427.5
+offset_right = 634.5
+offset_bottom = 1572.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 100
+text = "End"
+
+[node name="End_Confirm_Node" type="Control" parent="."]
 visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_left = 540.0
-offset_top = 960.0
+offset_top = 1000.0
 offset_right = 540.0
-offset_bottom = 960.0
-script = ExtResource("4_wncmg")
+offset_bottom = 1000.0
+script = ExtResource("8_nn460")
 
-[node name="ColorRect" type="ColorRect" parent="Timer_Settings"]
+[node name="Background" type="TextureRect" parent="End_Confirm_Node"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -540.0
-offset_top = -960.0
-offset_right = 540.0
-offset_bottom = 960.0
+offset_left = -250.0
+offset_top = -150.0
+offset_right = 250.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_u8j7e")
-color = Color(0.333333, 0.333333, 0.333333, 0.501961)
+texture = SubResource("PlaceholderTexture2D_ciwbr")
 
-[node name="Button" type="Button" parent="Timer_Settings"]
-layout_mode = 0
-offset_left = 520.0
-offset_top = 940.0
-offset_right = 528.0
-offset_bottom = 948.0
-
-[node name="Settings" type="Control" parent="Timer_Settings"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -350.0
-offset_top = -600.0
-offset_right = 350.0
-offset_bottom = 600.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("5_o5cvx")
-
-[node name="Background" type="TextureRect" parent="Timer_Settings/Settings"]
+[node name="Message_Label" type="RichTextLabel" parent="End_Confirm_Node/Background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_fvxm5")
+theme = SubResource("Theme_813gp")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]Are you sure you want to end the timer?
+(Add more text on rewards)"
 
-[node name="Break_Display" type="Control" parent="Timer_Settings/Settings"]
+[node name="Cancel_Button" type="Button" parent="End_Confirm_Node/Background"]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_top = 500.0
-offset_bottom = 500.0
-grow_horizontal = 2
-script = ExtResource("8_k8a8m")
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_bottom = -10.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Cancel"
 
-[node name="Break_Length" type="Label" parent="Timer_Settings/Settings/Break_Display"]
+[node name="Confirm_Button" type="Button" parent="End_Confirm_Node/Background"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -55.0
-offset_right = 160.0
-offset_bottom = 55.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 80
-text = "00:00:00
-"
-
-[node name="Add" type="Button" parent="Timer_Settings/Settings/Break_Display"]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 175.0
-offset_top = -59.0
-offset_right = 229.0
-offset_bottom = 59.0
-grow_vertical = 2
-theme = SubResource("Theme_6jfhn")
-theme_override_font_sizes/font_size = 80
-text = "+"
-
-[node name="Subtract" type="Button" parent="Timer_Settings/Settings/Break_Display"]
-layout_mode = 1
-anchors_preset = 6
+anchors_preset = -1
 anchor_left = 1.0
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -229.0
-offset_top = -59.0
-offset_right = -175.0
-offset_bottom = 59.0
+anchor_bottom = 1.0
+offset_left = -203.0
+offset_top = -73.0
+offset_right = -40.0
+offset_bottom = -10.0
 grow_horizontal = 0
-grow_vertical = 2
-theme = SubResource("Theme_6jfhn")
-theme_override_font_sizes/font_size = 80
-text = "-"
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Confirm"
 
-[node name="Normal" type="Button" parent="Timer_Settings/Settings"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -100.0
-offset_top = 50.0
-offset_bottom = 81.0
-grow_horizontal = 2
-text = "N"
-
-[node name="Pomodoro" type="Button" parent="Timer_Settings/Settings"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_top = 50.0
-offset_right = 100.0
-offset_bottom = 81.0
-grow_horizontal = 2
-text = "P"
-
-[connection signal="pressed" from="Timer/Timer_Display/Add" to="Timer" method="_on_add_pressed"]
-[connection signal="text_submitted" from="Timer/Timer_Display/Hours" to="Timer" method="_on_hours_text_submitted"]
-[connection signal="text_submitted" from="Timer/Timer_Display/Minutes" to="Timer" method="_on_minutes_text_submitted"]
-[connection signal="pressed" from="Timer_Settings_Node/Timer_Settings" to="." method="_on_timer_settings_pressed"]
-[connection signal="pressed" from="Start" to="Timer" method="_on_start_pressed"]
-[connection signal="gui_input" from="Timer_Settings" to="Timer_Settings" method="_on_timer_settings_gui_input"]
-[connection signal="gui_input" from="Timer_Settings/ColorRect" to="Timer" method="_on_color_rect_gui_input"]
-[connection signal="gui_input" from="Timer_Settings/ColorRect" to="Timer_Settings" method="_on_color_rect_gui_input"]
-[connection signal="pressed" from="Timer_Settings/Settings/Normal" to="Timer_Settings/Settings" method="_on_normal_pressed"]
-[connection signal="pressed" from="Timer_Settings/Settings/Pomodoro" to="Timer_Settings/Settings" method="_on_pomodoro_pressed"]
+[connection signal="timeout" from="Work_Node/Work_Timer" to="." method="_on_work_timer_timeout"]
+[connection signal="timeout" from="Work_Node/Work_Timer" to="Break_Node" method="_on_work_timer_timeout"]
+[connection signal="pressed" from="Work_Node/Work_Setup_Display/Add_Work" to="Work_Node" method="_on_add_pressed"]
+[connection signal="pressed" from="Work_Node/Work_Setup_Display/Subtract_Work" to="Work_Node" method="_on_subtract_pressed"]
+[connection signal="text_submitted" from="Work_Node/Work_Setup_Display/Hours_Work" to="Work_Node" method="_on_hours_text_submitted"]
+[connection signal="text_submitted" from="Work_Node/Work_Setup_Display/Minutes_Work" to="Work_Node" method="_on_minutes_text_submitted"]
+[connection signal="text_submitted" from="Work_Node/Work_Setup_Display/Seconds_Work" to="Work_Node" method="_on_seconds_text_submitted"]
+[connection signal="timeout" from="Break_Node/Break_Timer" to="." method="_on_break_timer_timeout"]
+[connection signal="pressed" from="Break_Node/Break_Setup_Display/Add_Break" to="Break_Node" method="_on_add_pressed"]
+[connection signal="pressed" from="Break_Node/Break_Setup_Display/Subtract_Break" to="Break_Node" method="_on_subtract_pressed"]
+[connection signal="text_submitted" from="Break_Node/Break_Setup_Display/Hours_Break" to="Break_Node" method="_on_hours_text_submitted"]
+[connection signal="text_submitted" from="Break_Node/Break_Setup_Display/Minutes_Break" to="Break_Node" method="_on_minutes_text_submitted"]
+[connection signal="text_submitted" from="Break_Node/Break_Setup_Display/Seconds_Break" to="Break_Node" method="_on_seconds_text_submitted"]
+[connection signal="pressed" from="Start_Button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Start_Button" to="Work_Node" method="_on_start_pressed"]
+[connection signal="pressed" from="Start_Button" to="Break_Node" method="_on_start_pressed"]
+[connection signal="pressed" from="Normal_Button" to="." method="_on_normal_pressed"]
+[connection signal="pressed" from="Pomodoro_Button" to="." method="_on_pomodoro_pressed"]
+[connection signal="pressed" from="Pause_Button" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="End_Button" to="." method="_on_end_button_pressed"]
+[connection signal="pressed" from="End_Confirm_Node/Background/Cancel_Button" to="." method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="End_Confirm_Node/Background/Confirm_Button" to="." method="_on_confirm_button_pressed"]

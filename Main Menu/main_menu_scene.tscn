@@ -9,7 +9,7 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="Theme" id="Theme_yk2ja"]
 Panel/styles/panel = SubResource("StyleBoxFlat_fe21t")
 
-[node name="MainMenu_Scene" type="Node2D"]
+[node name="Main_Menu_Scene" type="Node2D"]
 script = ExtResource("1_am47n")
 
 [node name="Panel" type="Panel" parent="."]

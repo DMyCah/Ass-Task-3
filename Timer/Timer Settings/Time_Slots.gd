@@ -13,5 +13,7 @@ func _process(_delta):
 
 
 func _on_text_submitted(new_text):
+	if int(new_text) >= 60:
+		new_text = int(new_text) - 60
 	self.text = "%02d" % int(new_text)
 	
