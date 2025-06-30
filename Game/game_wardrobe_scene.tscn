@@ -118,6 +118,14 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Clear"
 
+[node name="Save_Button" type="Button" parent="."]
+offset_left = 928.0
+offset_top = 1270.0
+offset_right = 1078.0
+offset_bottom = 1420.0
+theme_override_font_sizes/font_size = 50
+text = "Save"
+
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.447059)
 position = Vector2(570, 891)
@@ -136,3 +144,4 @@ scale = Vector2(3, 3)
 [connection signal="pressed" from="Wardrobe_Menu/Tab_Organiser/Footwear_Tab" to="Wardrobe_Menu" method="_on_footwear_tab_pressed"]
 [connection signal="item_selected" from="Wardrobe_Menu/Item_Display" to="." method="_on_item_display_item_selected"]
 [connection signal="pressed" from="Wardrobe_Menu/Item_Display/Clear_Accessory_Button" to="." method="_on_clear_accessory_button_pressed"]
+[connection signal="pressed" from="Save_Button" to="." method="_on_save_button_pressed"]

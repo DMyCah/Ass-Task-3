@@ -4,16 +4,19 @@ var break_length = 1
 var previous_length = 1
 
 func _ready():
+	var timerDuration = SaveManager.current_save_data["Last_Break_Length"]
+	#Rounds to nearest integer
+	$Break_Setup_Display.load_time_display()
 	set_break_length()
 	
 func set_break_length():
 	break_length = (floor(float($Break_Setup_Display/Hours_Break.text))*3600) + (floor(float($Break_Setup_Display/Minutes_Break.text))*60) + floor(float($Break_Setup_Display/Seconds_Break.text))
-	
 	#Check if timer length is = 0 and resets to previous length if it is
 	if break_length == 0:
 		break_length = previous_length
 	else:
 		previous_length = break_length
+		SaveManager.current_save_data["Last_Break_Length"] = break_length
 	return break_length
 	
 func break_left():
@@ -32,6 +35,16 @@ func break_duration():
 	var minute = int(breakDuration) % 3600/60
 	var second = int(breakDuration)%60
 	return [hour, minute, second]
+
+func break_load_duration():
+	var timerDuration = SaveManager.current_save_data["Last_Break_Length"]
+	#Rounds to nearest integer
+	var hour = int(timerDuration)/3600
+	var minute = int(timerDuration) % 3600/60
+	var second = int(timerDuration)%60
+	return [hour, minute, second]
+
+
 
 
 func _process(_delta):

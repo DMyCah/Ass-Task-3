@@ -1,13 +1,12 @@
-res://Game/duck_base.tscn
-res://Game/duck_base.gd
 res://Game/game_wardrobe_scene.tscn
+res://SaveManager.gd
+res://Game/duck_base.tscn
+res://Login/login_scene.tscn
+res://Setting/settings_scene.tscn
 res://UI/scene_changer.tscn
-res://Game/game_inventory_scene.tscn
-res://Game/game_collection_scene.tscn
-res://Main Menu/main_menu_ui.tscn
-res://Main Menu/main_menu_scene.tscn
-res://Game/Wardrobe_Menu.gd
-res://Game/game_wardrobe_scene.gd
-res://Globals.gd
-res://Game/Button.gd
-res://Game/Headwear.gd
+res://Login/login_scene.gd
+res://Setting/settings_scene.gd
+res://Game/game_menu_bar.gd
+res://Game/game_shop_scene.tscn
+res://UI/scene_changer.gd
+res://Game/game_menu_bar.tscn

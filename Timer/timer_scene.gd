@@ -1,7 +1,7 @@
 extends Node2D
 
 #Change to be saved depending on persons preference
-var mode = Globals.timer_Mode
+var mode = SaveManager.current_save_data["timer_Mode_Prefernce"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

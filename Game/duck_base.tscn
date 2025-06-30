@@ -13,7 +13,6 @@
 radius = 100.0
 
 [node name="Duck_Base" type="CharacterBody2D"]
-position = Vector2(289, 160)
 script = ExtResource("1_gxp8o")
 
 [node name="DuckCollisionShape" type="CollisionShape2D" parent="."]

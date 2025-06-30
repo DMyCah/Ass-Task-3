@@ -19,3 +19,9 @@ func _on_item_display_item_selected(index):
 
 func _on_clear_accessory_button_pressed():
 	$Duck_Base.change_accessory(Globals.current_wardrobe_tab, "clear")
+
+
+
+func _on_save_button_pressed():
+	$Duck_Base.update_save()
+	SaveManager.save_game()

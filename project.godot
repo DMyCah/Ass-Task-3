@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="Ass. Task 3"
-run/main_scene="res://Main Menu/main_menu_scene.tscn"
+run/main_scene="res://Login/login_scene.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
 
 [autoload]
 
 Globals="*res://Globals.gd"
+SaveManager="*res://SaveManager.gd"
 
 [display]
 

@@ -1,9 +1,10 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1751199810
+::res://::1751323622
 global.tscn::PackedScene::5993352659120071772::1751112448::0::1::::<><>::res://Globals.gd
-Globals.gd::GDScript::-1::1751166365::0::1::::<>Node<>::
+Globals.gd::GDScript::-1::1751287122::0::1::::<>Node<>::
 icon.svg::CompressedTexture2D::5368887010768600924::1748166179::1748167563::1::::<><>::
 README.md::TextFile::-1::1748167251::0::1::::<><>::
+SaveManager.gd::GDScript::-1::1751284474::0::1::::<>Node<>::
 Untitled_Artwork 4.png::CompressedTexture2D::3431298091928452337::1748215382::1748215382::1::::<><>::
 ::res://addons/::1748166654
 ::res://addons/godot-git-plugin/::1748166654
@@ -13,7 +14,7 @@ THIRDPARTY.md::TextFile::-1::1748166654::0::1::::<><>::
 ::res://addons/godot-git-plugin/linux/::1748166654
 ::res://addons/godot-git-plugin/macos/::1748166654
 ::res://addons/godot-git-plugin/win64/::1748166654
-::res://Assets/::1751203202
+::res://Assets/::1751203206
 Shadow.png::CompressedTexture2D::8434089088252746219::1751203202::1751203206::1::::<><>::
 ::res://Assets/Backgrounds/::1751202042
 CollectionBackground_Temp.png::CompressedTexture2D::7677621735220946508::1751199876::1751202042::1::::<><>::
@@ -31,60 +32,71 @@ WizardBeard.png::CompressedTexture2D::1166691677375301714::1751200587::175120098
 ChunkyGumboots.png::CompressedTexture2D::2168109989570448360::1751200273::1751200985::1::::<><>::
 ::res://Assets/FullBodywear/::1751201183
 AirplaneSuit.png::CompressedTexture2D::49950298815648274::1751200651::1751201183::1::::<><>::
-::res://Assets/Headwear/::1751201246
+::res://Assets/Headwear/::1751285459
 BeethovenHair.png::CompressedTexture2D::5896842550919854255::1751200395::1751200985::1::::<><>::
+Beret.png::CompressedTexture2D::5766305549295989180::1751285757::1751285459::1::::<><>::
 PilotHat.png::CompressedTexture2D::4665129066717918528::1751200670::1751200985::1::::<><>::
 WizardHat.png::CompressedTexture2D::6963937386321187715::1751200633::1751200985::1::::<><>::
-::res://Assets/Neckwear/::1751201033
+::res://Assets/Neckwear/::1751285459
 BeethovenTie.png::CompressedTexture2D::7496677764412257822::1751200439::1751201033::1::::<><>::
 RedTie.png::CompressedTexture2D::7423793841558340897::1751200314::1751200985::1::::<><>::
-Scarf_Temp.png::CompressedTexture2D::8673939421463737694::1751179569::1751200983::1::::<><>::
-Tie_Temp.png::CompressedTexture2D::2669490883559079260::1751178554::1751200983::1::::<><>::
-::res://Assets/Wingwear/::1751201032
+Scarf.png::CompressedTexture2D::1619658617226357421::1751285745::1751285459::1::::<><>::
+::res://Assets/Wingwear/::1751285459
+Baguette.png::CompressedTexture2D::6702646701992271432::1751285714::1751285459::1::::<><>::
 BeethovenPencil.png::CompressedTexture2D::6377804581640111970::1751200480::1751201032::1::::<><>::
 WizardWand.png::CompressedTexture2D::5480303261432549242::1751200641::1751201032::1::::<><>::
 ::res://Calender/::1748922673
 calender_scene.gd::GDScript::-1::1748220964::0::1::::<>Node2D<>::
 calender_scene.tscn::PackedScene::2328429159347672842::1748922673::0::1::::<><>::res://Calender/calender_scene.gd<>uid://dkpt7hvywnb3y::::res://back_button_test.tscn
-::res://Game/::1751202885
-Button.gd::GDScript::-1::1751183426::0::1::::<>Button<>::
-duck_base.gd::GDScript::-1::1751201105::0::1::::<>CharacterBody2D<>::
-duck_base.tscn::PackedScene::6255920912402171219::1751202885::0::1::::<><>::res://Game/duck_base.gd<>uid://bjvi3w5alj20e::::res://Assets/Bodies/YellowDuck.png<>res://Game/Headwear.gd<>res://Game/Eyewear.gd<>res://Game/Neckwear.gd<>res://Game/FullBodyWear.gd<>res://Game/Footwear.gd<>res://Game/Wingwear.gd
+::res://Game/::1751289375
+duck_base.gd::GDScript::-1::1751289322::0::1::::<>CharacterBody2D<>::
+duck_base.tscn::PackedScene::6255920912402171219::1751289375::0::1::::<><>::res://Game/duck_base.gd<>uid://bjvi3w5alj20e::::res://Assets/Bodies/YellowDuck.png<>res://Game/Headwear.gd<>res://Game/Eyewear.gd<>res://Game/Neckwear.gd<>res://Game/FullBodyWear.gd<>res://Game/Footwear.gd<>res://Game/Wingwear.gd
 Eyewear.gd::GDScript::-1::1751183686::0::1::::<>Sprite2D<>::
 Footwear.gd::GDScript::-1::1751183686::0::1::::<>Sprite2D<>::
-game_collection_scene.gd::GDScript::-1::1751183610::0::1::::<>Node2D<>::
-game_collection_scene.tscn::PackedScene::7718234719231610710::1751202486::0::1::::<><>::res://Game/game_collection_scene.gd<>uid://coxax4yxcvi2g::::res://UI/scene_changer.tscn<>uid://cmc7bjuwnapv::::res://Game/game_menu_bar.tscn
-game_inventory_scene.tscn::PackedScene::1402983331777238916::1751202486::0::1::::<><>::uid://cmc7bjuwnapv::::res://Game/game_menu_bar.tscn<>uid://coxax4yxcvi2g::::res://UI/scene_changer.tscn
-game_menu_bar.gd::GDScript::-1::1751166526::0::1::::<>Control<>::
-game_menu_bar.tscn::PackedScene::165328867080480923::1751175301::0::1::::<><>::res://Game/game_menu_bar.gd
-game_wardrobe_scene.tscn::PackedScene::7296330508847981054::1751202840::0::1::::<><>::uid://cmc7bjuwnapv::::res://Game/game_menu_bar.tscn<>uid://c2xsqitgscjci::::res://Assets/Backgrounds/Pedestal.png<>uid://coxax4yxcvi2g::::res://UI/scene_changer.tscn<>uid://cveodrtbufiop::::res://Game/duck_base.tscn
-Headwear.gd::GDScript::-1::1751183426::0::1::::<>Sprite2D<>::
-Neckwear.gd::GDScript::-1::1751183687::0::1::::<>Sprite2D<>::
 FullBodyWear.gd::GDScript::-1::1751201070::0::1::::<>Sprite2D<>::
+game_collection_scene.gd::GDScript::-1::1751183610::0::1::::<>Node2D<>::
+game_collection_scene.tscn::PackedScene::7718234719231610710::1751234970::0::1::::<><>::res://Game/game_collection_scene.gd<>uid://coxax4yxcvi2g::::res://UI/scene_changer.tscn<>uid://cmc7bjuwnapv::::res://Game/game_menu_bar.tscn
+game_inventory_scene.tscn::PackedScene::1402983331777238916::1751234970::0::1::::<><>::uid://cmc7bjuwnapv::::res://Game/game_menu_bar.tscn<>uid://coxax4yxcvi2g::::res://UI/scene_changer.tscn
+game_menu_bar.gd::GDScript::-1::1751265353::0::1::::<>Control<>::
+game_menu_bar.tscn::PackedScene::165328867080480923::1751175301::0::1::::<><>::res://Game/game_menu_bar.gd
+game_wardrobe_scene.gd::GDScript::-1::1751288475::0::1::::<>Node2D<>::
+game_wardrobe_scene.tscn::PackedScene::7296330508847981054::1751289375::0::1::::<><>::uid://cmc7bjuwnapv::::res://Game/game_menu_bar.tscn<>res://Game/game_wardrobe_scene.gd<>uid://c2xsqitgscjci::::res://Assets/Backgrounds/Pedestal.png<>uid://coxax4yxcvi2g::::res://UI/scene_changer.tscn<>uid://cveodrtbufiop::::res://Game/duck_base.tscn<>uid://dsfshkuh71hex::::res://Assets/Shadow.png<>res://Game/Wardrobe_Menu.gd
+Headwear.gd::GDScript::-1::1751206347::0::1::::<>Sprite2D<>::
+Neckwear.gd::GDScript::-1::1751183687::0::1::::<>Sprite2D<>::
+Wardrobe_Menu.gd::GDScript::-1::1751205350::0::1::::<>Control<>::
 Wingwear.gd::GDScript::-1::1751201065::0::1::::<>Sprite2D<>::
-::res://Main Menu/::1751202486
+::res://Login/::1751289375
+Create_Panel.gd::GDScript::-1::1751253315::0::1::::<>Control<>::
+Login_Panel.gd::GDScript::-1::1751244808::0::1::::<>Control<>::
+login_scene.gd::GDScript::-1::1751283708::0::1::::<>Node2D<>::
+login_scene.tscn::PackedScene::8675465455155888384::1751289375::0::1::::<><>::res://Login/login_scene.gd<>res://Login/Opening_Panel.gd<>res://Login/Login_Panel.gd<>res://Login/Create_Panel.gd
+Opening_Panel.gd::GDScript::-1::1751245031::0::1::::<>Control<>::
+::res://Main Menu/::1751265039
 main_menu_scene.gd::GDScript::-1::1750899138::0::1::::<>Node2D<>::
-main_menu_scene.tscn::PackedScene::640175114971148084::1751202486::0::1::::<><>::uid://drgi0ijit7jh6::::res://Main Menu/main_menu_ui.tscn<>res://Main Menu/main_menu_scene.gd
-main_menu_ui.gd::GDScript::-1::1751182209::0::1::::<>Control<>::
-main_menu_ui.tscn::PackedScene::8365389474720149537::1751202486::0::1::::<><>::res://Main Menu/main_menu_ui.gd<>uid://bahu5ws36knvt::::res://Assets/Button/Settings.png
+main_menu_scene.tscn::PackedScene::640175114971148084::1751265039::0::1::::<><>::uid://drgi0ijit7jh6::::res://Main Menu/main_menu_ui.tscn<>res://Main Menu/main_menu_scene.gd
+main_menu_ui.gd::GDScript::-1::1751265039::0::1::::<>Control<>::
+main_menu_ui.tscn::PackedScene::8365389474720149537::1751242532::0::1::::<><>::res://Main Menu/main_menu_ui.gd<>uid://bahu5ws36knvt::::res://Assets/Button/Settings.png
 ::res://Memo/::1748922673
 memo_scene.tscn::PackedScene::3632795666656378192::1748922673::0::1::::<><>::uid://dkpt7hvywnb3y::::res://back_button_test.tscn
-::res://Setting/::1751182509
-end_confirm_node.tscn::PackedScene::364331377952458812::1751117483::0::1::::<><>::res://Timer/end_confirm_node.gd
-settings_scene.gd::GDScript::-1::1751181871::0::1::::<>Node2D<>::
-settings_scene.tscn::PackedScene::2709367359472115571::1751182509::0::1::::<><>::uid://coxax4yxcvi2g::::res://UI/scene_changer.tscn<>res://Setting/settings_scene.gd
-::res://Timer/::1751182443
-Break_Node.gd::GDScript::-1::1751113603::0::1::::<>Control<>::
-Break_Setup_Display.gd::GDScript::-1::1751108003::0::1::::<>Control<>::
-end_confirm_node.gd::GDScript::-1::1751117483::0::1::::<>Control<>::
+::res://Setting/::1751289375
+Delete_Confirm_Node.gd::GDScript::-1::1751284888::0::1::::<>Control<>::
+end_confirm_node.tscn::PackedScene::364331377952458812::1751285012::0::1::::<><>::res://Timer/end_confirm_node.gd
+Reset_Confirm_Node.gd::GDScript::-1::1751285106::0::1::::<>Control<>::
+settings_scene.gd::GDScript::-1::1751284331::0::1::::<>Node2D<>::
+settings_scene.tscn::PackedScene::2709367359472115571::1751289375::0::1::::<><>::uid://coxax4yxcvi2g::::res://UI/scene_changer.tscn<>res://Setting/settings_scene.gd<>res://Setting/Reset_Confirm_Node.gd<>res://Setting/Delete_Confirm_Node.gd
+::res://Timer/::1751285055
+Break_Node.gd::GDScript::-1::1751244546::0::1::::<>Control<>::
+Break_Setup_Display.gd::GDScript::-1::1751243775::0::1::::<>Control<>::
+end_confirm_node.gd::GDScript::-1::1751285055::0::1::::<>Control<>::
 Settings.gd::GDScript::-1::1750899952::0::1::::<>Control<>::
-timer_scene.gd::GDScript::-1::1751118453::0::1::::<>Node2D<>::
-timer_scene.tscn::PackedScene::6836345425359031553::1751182443::0::1::::<><>::res://Timer/timer_scene.gd<>uid://coxax4yxcvi2g::::res://UI/scene_changer.tscn<>res://Timer/Work_Node.gd<>res://Timer/Break_Node.gd<>res://Timer/Work_Setup_Display.gd<>uid://cpnid0qnob4p8::::res://Timer/Timer Settings/time_slots.tscn<>res://Timer/Break_Setup_Display.gd<>res://Timer/end_confirm_node.gd
-Work_Node.gd::GDScript::-1::1751113450::0::1::::<>Control<>::
-Work_Setup_Display.gd::GDScript::-1::1751107698::0::1::::<>Control<>::
+timer_scene.gd::GDScript::-1::1751237811::0::1::::<>Node2D<>::
+timer_scene.tscn::PackedScene::6836345425359031553::1751285055::0::1::::<><>::res://Timer/timer_scene.gd<>uid://coxax4yxcvi2g::::res://UI/scene_changer.tscn<>res://Timer/Work_Node.gd<>res://Timer/Break_Node.gd<>res://Timer/Work_Setup_Display.gd<>uid://cpnid0qnob4p8::::res://Timer/Timer Settings/time_slots.tscn<>res://Timer/Break_Setup_Display.gd<>res://Timer/end_confirm_node.gd
+Work_Node.gd::GDScript::-1::1751244574::0::1::::<>Control<>::
+Work_Setup_Display.gd::GDScript::-1::1751243628::0::1::::<>Control<>::
 ::res://Timer/Timer Settings/::1751077304
 Time_Slots.gd::GDScript::-1::1751077304::0::1::::<>LineEdit<>::
 time_slots.tscn::PackedScene::5853003364493378203::1750989379::0::1::::<><>::res://Timer/Timer Settings/Time_Slots.gd
-::res://UI/::1751202486
-scene_changer.gd::GDScript::-1::1751181893::0::1::::<>Control<>::
-scene_changer.tscn::PackedScene::5803008501222826084::1751202486::0::1::::<><>::res://UI/scene_changer.gd<>uid://bahu5ws36knvt::::res://Assets/Button/Settings.png
+::res://UI/::1751265353
+Save_Button.gd::GDScript::-1::1751244261::0::1::::<>Button<>::
+scene_changer.gd::GDScript::-1::1751265353::0::1::::<>Control<>::
+scene_changer.tscn::PackedScene::5803008501222826084::1751253695::0::1::::<><>::res://UI/scene_changer.gd<>uid://bahu5ws36knvt::::res://Assets/Button/Settings.png<>res://UI/Save_Button.gd

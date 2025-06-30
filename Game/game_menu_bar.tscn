@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Game/game_menu_bar.gd" id="1_7geo8"]
 
-[sub_resource type="ButtonGroup" id="ButtonGroup_tqgu2"]
+[sub_resource type="ButtonGroup" id="ButtonGroup_v07tm"]
 
 [node name="Game_Menu_Bar" type="Control"]
 layout_mode = 3
@@ -19,28 +19,35 @@ layout_mode = 0
 offset_left = 930.0
 offset_top = 50.0
 offset_right = 1080.0
-offset_bottom = 500.0
+offset_bottom = 650.0
 theme_override_constants/separation = 0
 
 [node name="Collection_Button" type="Button" parent="Menu_Box"]
 layout_mode = 2
 size_flags_vertical = 3
 toggle_mode = true
-button_group = SubResource("ButtonGroup_tqgu2")
+button_group = SubResource("ButtonGroup_v07tm")
 text = "C"
 
 [node name="Inventory_Button" type="Button" parent="Menu_Box"]
 layout_mode = 2
 size_flags_vertical = 3
 toggle_mode = true
-button_group = SubResource("ButtonGroup_tqgu2")
+button_group = SubResource("ButtonGroup_v07tm")
 text = "I"
+
+[node name="Shop_Button" type="Button" parent="Menu_Box"]
+layout_mode = 2
+size_flags_vertical = 3
+toggle_mode = true
+button_group = SubResource("ButtonGroup_v07tm")
+text = "S"
 
 [node name="Wardrobe_Button" type="Button" parent="Menu_Box"]
 layout_mode = 2
 size_flags_vertical = 3
 toggle_mode = true
-button_group = SubResource("ButtonGroup_tqgu2")
+button_group = SubResource("ButtonGroup_v07tm")
 text = "W"
 
 [node name="Menu_Button" type="Button" parent="."]
@@ -55,5 +62,6 @@ text = "Menu
 
 [connection signal="pressed" from="Menu_Box/Collection_Button" to="." method="_on_collection_button_pressed"]
 [connection signal="pressed" from="Menu_Box/Inventory_Button" to="." method="_on_inventory_button_pressed"]
+[connection signal="pressed" from="Menu_Box/Shop_Button" to="." method="_on_shop_button_pressed"]
 [connection signal="pressed" from="Menu_Box/Wardrobe_Button" to="." method="_on_wardrobe_button_pressed"]
 [connection signal="toggled" from="Menu_Button" to="." method="_on_menu_button_toggled"]

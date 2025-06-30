@@ -1,0 +1,243 @@
+[gd_scene load_steps=7 format=3 uid="uid://dvupwbyodn3qy"]
+
+[ext_resource type="Script" path="res://Login/login_scene.gd" id="1_ej1uq"]
+[ext_resource type="Script" path="res://Login/Opening_Panel.gd" id="2_3jspj"]
+[ext_resource type="Script" path="res://Login/Login_Panel.gd" id="3_wite3"]
+[ext_resource type="Script" path="res://Login/Create_Panel.gd" id="4_xmuki"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fe21t"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Theme" id="Theme_q8bqn"]
+Panel/styles/panel = SubResource("StyleBoxFlat_fe21t")
+
+[node name="Login_Scene" type="Node2D"]
+script = ExtResource("1_ej1uq")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1080.0
+offset_bottom = 1920.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = SubResource("Theme_q8bqn")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -346.0
+offset_top = -239.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="New_Save_Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "New Save"
+
+[node name="Load_Save_Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "Load Save"
+
+[node name="Reset_Data_Button" type="Button" parent="CanvasLayer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "!!!Clear Data!!!"
+
+[node name="Opening_Panel" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("2_3jspj")
+
+[node name="Login_Panel_Button" type="Button" parent="Opening_Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 470.0
+offset_top = 300.0
+offset_right = 610.0
+offset_bottom = 377.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Login"
+
+[node name="Create_Panel_Button" type="Button" parent="Opening_Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 455.5
+offset_top = 600.0
+offset_right = 624.5
+offset_bottom = 677.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Create"
+
+[node name="Login_Panel" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("3_wite3")
+
+[node name="Valid_Username_Label" type="Label" parent="Login_Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 319.0
+offset_top = 350.0
+offset_right = 761.0
+offset_bottom = 392.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Please Enter A Valid Username"
+
+[node name="Username" type="LineEdit" parent="Login_Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 315.0
+offset_top = 400.0
+offset_right = 765.0
+offset_bottom = 477.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+placeholder_text = "Username"
+
+[node name="Login" type="Button" parent="Login_Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 470.0
+offset_top = 600.0
+offset_right = 610.0
+offset_bottom = 677.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Login"
+
+[node name="Back" type="Button" parent="Login_Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 478.0
+offset_top = 1300.0
+offset_right = 602.0
+offset_bottom = 1377.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Back
+"
+
+[node name="Create_Panel" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("4_xmuki")
+
+[node name="Username_Taken_Label" type="Label" parent="Create_Panel"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 418.0
+offset_top = 750.0
+offset_right = 662.0
+offset_bottom = 792.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+text = "Username Taken"
+
+[node name="Create_Username" type="LineEdit" parent="Create_Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 337.5
+offset_top = 800.0
+offset_right = 742.5
+offset_bottom = 877.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+placeholder_text = "Username"
+
+[node name="Create_Button" type="Button" parent="Create_Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 455.5
+offset_top = 1000.0
+offset_right = 624.5
+offset_bottom = 1077.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Create"
+
+[node name="Back" type="Button" parent="Create_Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 478.0
+offset_top = 1300.0
+offset_right = 602.0
+offset_bottom = 1377.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Back"
+
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/New_Save_Button" to="." method="_on_new_save_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Load_Save_Button" to="." method="_on_load_save_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/VBoxContainer/Reset_Data_Button" to="." method="_on_reset_data_button_pressed"]
+[connection signal="pressed" from="Opening_Panel/Login_Panel_Button" to="." method="_on_login_panel_button_pressed"]
+[connection signal="pressed" from="Opening_Panel/Create_Panel_Button" to="." method="_on_create_panel_button_pressed"]
+[connection signal="text_changed" from="Login_Panel/Username" to="." method="_on_username_text_changed"]
+[connection signal="pressed" from="Login_Panel/Login" to="." method="_on_login_pressed"]
+[connection signal="pressed" from="Login_Panel/Back" to="." method="_on_back_pressed"]
+[connection signal="text_changed" from="Create_Panel/Create_Username" to="." method="_on_create_username_text_changed"]
+[connection signal="pressed" from="Create_Panel/Create_Button" to="." method="_on_create_button_pressed"]
+[connection signal="pressed" from="Create_Panel/Back" to="." method="_on_back_pressed"]

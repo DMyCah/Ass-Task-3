@@ -4,16 +4,18 @@ var timer_length = 1
 var previous_length = 1
 
 func _ready():
+	#Rounds to nearest integer
+	$Work_Setup_Display.load_time_display()
 	set_timer_length()
 	
 func set_timer_length():
 	timer_length = (floor(float($Work_Setup_Display/Hours_Work.text))*3600) + (floor(float($Work_Setup_Display/Minutes_Work.text))*60) + floor(float($Work_Setup_Display/Seconds_Work.text))
-	
 	#Check if timer length is = 0 and resets to previous length if it is
 	if timer_length == 0:
 		timer_length = previous_length
 	else:
 		previous_length = timer_length
+		SaveManager.current_save_data["Last_Timer_Length"] = timer_length
 	return timer_length
 	
 func time_left():
@@ -34,6 +36,16 @@ func timer_duration():
 	var minute = int(timerDuration) % 3600/60
 	var second = int(timerDuration)%60
 	return [hour, minute, second]
+
+func work_load_duration():
+	var timerDuration = SaveManager.current_save_data["Last_Timer_Length"]
+	#Rounds to nearest integer
+	var hour = int(timerDuration)/3600
+	var minute = int(timerDuration) % 3600/60
+	var second = int(timerDuration)%60
+	return [hour, minute, second]
+
+
 
 
 func _process(_delta):

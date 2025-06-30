@@ -1,10 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://beuo5ctax211p"]
+[gd_scene load_steps=8 format=3 uid="uid://beuo5ctax211p"]
 
 [ext_resource type="PackedScene" uid="uid://coxax4yxcvi2g" path="res://UI/scene_changer.tscn" id="1_10wqp"]
 [ext_resource type="Script" path="res://Setting/settings_scene.gd" id="1_imv0h"]
+[ext_resource type="Script" path="res://Setting/Reset_Confirm_Node.gd" id="3_28bcq"]
+[ext_resource type="Script" path="res://Setting/Delete_Confirm_Node.gd" id="4_pkt1r"]
 
 [sub_resource type="Theme" id="Theme_n1cxc"]
 Label/font_sizes/font_size = 100
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ciwbr"]
+
+[sub_resource type="Theme" id="Theme_813gp"]
 
 [node name="Settings_Scene" type="Node2D"]
 script = ExtResource("1_imv0h")
@@ -33,3 +39,216 @@ text = "Settings Scene"
 metadata/_edit_use_anchors_ = true
 
 [node name="Scene_Changer" parent="CanvasLayer" instance=ExtResource("1_10wqp")]
+
+[node name="Reset_Data_Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 393.0
+offset_top = 1500.0
+offset_right = 687.0
+offset_bottom = 1577.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Reset Data"
+
+[node name="Delete_Data_Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 393.0
+offset_top = 1600.0
+offset_right = 687.0
+offset_bottom = 1677.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Delete Data"
+
+[node name="Sign_Out_Button" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 433.5
+offset_top = 1000.0
+offset_right = 646.5
+offset_bottom = 1077.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 50
+text = "Sign Out"
+
+[node name="Reset_Confirm_Node" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 540.0
+offset_top = 1300.0
+offset_right = 540.0
+offset_bottom = 1300.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_28bcq")
+
+[node name="Click_Cancel" type="ColorRect" parent="Reset_Confirm_Node"]
+layout_mode = 0
+offset_left = -540.0
+offset_top = -1300.0
+offset_right = 540.0
+offset_bottom = 620.0
+color = Color(1, 1, 0.431373, 0.686275)
+
+[node name="TextureRect" type="TextureRect" parent="Reset_Confirm_Node"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -109.0
+offset_right = 250.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_ciwbr")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Reset_Confirm_Node/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_813gp")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]Are you sure you want to reset your account?"
+
+[node name="Cancel_Button" type="Button" parent="Reset_Confirm_Node/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_bottom = -10.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Cancel"
+
+[node name="Confirm_Button" type="Button" parent="Reset_Confirm_Node/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -203.0
+offset_top = -73.0
+offset_right = -40.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Confirm"
+
+[node name="Delete_Confirm_Node" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 540.0
+offset_top = 1300.0
+offset_right = 540.0
+offset_bottom = 1300.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("4_pkt1r")
+
+[node name="Click_Cancel" type="ColorRect" parent="Delete_Confirm_Node"]
+layout_mode = 0
+offset_left = -540.0
+offset_top = -1300.0
+offset_right = 540.0
+offset_bottom = 620.0
+color = Color(1, 1, 0.431373, 0.686275)
+
+[node name="TextureRect" type="TextureRect" parent="Delete_Confirm_Node"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -109.0
+offset_right = 250.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_ciwbr")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Delete_Confirm_Node/TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_813gp")
+theme_override_font_sizes/normal_font_size = 40
+bbcode_enabled = true
+text = "[center]Are you sure you want to delete your account?"
+
+[node name="Cancel_Button" type="Button" parent="Delete_Confirm_Node/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 40.0
+offset_bottom = -10.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Cancel"
+
+[node name="Delete_Confirm_Button" type="Button" parent="Delete_Confirm_Node/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -203.0
+offset_top = -73.0
+offset_right = -40.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "Confirm"
+
+[connection signal="pressed" from="Reset_Data_Button" to="." method="_on_reset_data_button_pressed"]
+[connection signal="pressed" from="Delete_Data_Button" to="." method="_on_delete_data_button_pressed"]
+[connection signal="pressed" from="Sign_Out_Button" to="." method="_on_sign_out_button_pressed"]
+[connection signal="gui_input" from="Reset_Confirm_Node/Click_Cancel" to="Reset_Confirm_Node" method="_on_click_cancel_gui_input"]
+[connection signal="pressed" from="Reset_Confirm_Node/TextureRect/Cancel_Button" to="Reset_Confirm_Node" method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="Reset_Confirm_Node/TextureRect/Confirm_Button" to="." method="_on_confirm_button_pressed"]
+[connection signal="pressed" from="Reset_Confirm_Node/TextureRect/Confirm_Button" to="Reset_Confirm_Node" method="_on_confirm_button_pressed"]
+[connection signal="gui_input" from="Delete_Confirm_Node/Click_Cancel" to="Delete_Confirm_Node" method="_on_click_cancel_gui_input"]
+[connection signal="pressed" from="Delete_Confirm_Node/TextureRect/Cancel_Button" to="Delete_Confirm_Node" method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="Delete_Confirm_Node/TextureRect/Delete_Confirm_Button" to="." method="_on_delete_confirm_button_pressed"]
+[connection signal="pressed" from="Delete_Confirm_Node/TextureRect/Delete_Confirm_Button" to="Delete_Confirm_Node" method="_on_confirm_button_pressed"]
