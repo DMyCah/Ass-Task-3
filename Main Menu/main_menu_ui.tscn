@@ -1,11 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://drgi0ijit7jh6"]
+[gd_scene load_steps=10 format=3 uid="uid://drgi0ijit7jh6"]
 
 [ext_resource type="Script" path="res://Main Menu/main_menu_ui.gd" id="1_ur10r"]
+[ext_resource type="Texture2D" uid="uid://c6d375t81vq3t" path="res://Assets/Button/LoginTimerButton.png" id="2_31cv6"]
 [ext_resource type="Texture2D" uid="uid://bahu5ws36knvt" path="res://Assets/Button/Settings.png" id="2_sy23k"]
+[ext_resource type="Texture2D" uid="uid://qrpidkih8hpo" path="res://Assets/Button/gameButton.png" id="3_7413n"]
 
 [sub_resource type="Theme" id="Theme_o4p5i"]
 default_font_size = 100
 VBoxContainer/constants/separation = 50
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qqier"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gg2vm"]
 
@@ -33,7 +37,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Buttons_Container" type="VBoxContainer" parent="Buttons_Centering_Container"]
-custom_minimum_size = Vector2(800, 800)
 layout_mode = 2
 theme = SubResource("Theme_o4p5i")
 
@@ -52,12 +55,14 @@ text = "Calender"
 [node name="Timer_Button" type="Button" parent="Buttons_Centering_Container/Buttons_Container"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Timer"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qqier")
+icon = ExtResource("2_31cv6")
 
 [node name="Game_Button" type="Button" parent="Buttons_Centering_Container/Buttons_Container"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Game"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qqier")
+icon = ExtResource("3_7413n")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 1
@@ -81,8 +86,8 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_wb5fw")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ncumm")
 icon = ExtResource("2_sy23k")
 
-[connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Memo_Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Memo_Button" to="." method="_on_memo_button_pressed"]
+[connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Memo_Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Calender_Button" to="." method="_on_calender_button_pressed"]
 [connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Timer_Button" to="." method="_on_timer_button_pressed"]
 [connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Game_Button" to="." method="_on_game_button_pressed"]

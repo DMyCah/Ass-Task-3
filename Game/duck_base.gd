@@ -20,90 +20,105 @@ func _ready():
 	if !duck_dictionary:
 		create_duck_save()
 	load_duck(1)
+	Globals.displaying_duck_ID = ID
 
 #Changes the texture on each individual part based on the path for the png given and which part to change
 func change_accessory(type, new_accessory_path):
 	if type == "Headwear/":
 		if new_accessory_path == "clear":
 			$Headwear.texture = null
+			Headwear = null
 		else:
 			$Headwear.texture = load(new_accessory_path)
 			Headwear = new_accessory_path
 	elif type == 'Eyewear/':
 		if new_accessory_path == "clear":
 			$Eyewear.texture = null
+			Eyewear = null
 		else:
 			$Eyewear.texture = load(new_accessory_path)
 			Eyewear = new_accessory_path
 	elif type == 'Neckwear/':
 		if new_accessory_path == "clear":
 			$Neckwear.texture = null
+			Neckwear = null
 		else:
 			$Neckwear.texture = load(new_accessory_path)
 			Neckwear = new_accessory_path
 	elif type == 'Footwear/':
 		if new_accessory_path == "clear":
 			$Footwear.texture = null
+			Footwear = null
 		else:
 			$Footwear.texture = load(new_accessory_path)
 			Footwear = new_accessory_path
 	elif type == 'Wingwear/':
 		if new_accessory_path == "clear":
 			$Wingwear.texture = null
+			Wingwear = null
 		else:
 			$Wingwear.texture = load(new_accessory_path)
 			Wingwear = new_accessory_path
 	elif type == 'FullBodywear/':
 		if new_accessory_path == "clear":
 			$FullBodywear.texture = null
+			FullBodywear = null
 		else:
 			$FullBodywear.texture = load(new_accessory_path)
 			FullBodywear = new_accessory_path
 
 
-func load_duck(ID):
+func load_duck(Loading_ID):
+	ID = Loading_ID
+	Globals.displaying_duck_ID = ID
 	var loading = duck_dictionary[ID-1]
 	if loading["Body"]:
 		Body = loading["Body"]
 		$Body.texture = load(Body)
 	else:
-		$Body.texture = null
+		print("Error loading body for duck: " + ID)
 
 	if loading["Headwear"]:
 		Headwear = loading["Headwear"]
 		$Headwear.texture = load(Headwear)
 	else:
 		$Headwear.texture = null
+		Headwear = null
 
 	if loading["Eyewear"]:
 		Eyewear = loading["Eyewear"]
 		$Eyewear.texture = load(Eyewear)
 	else:
 		$Eyewear.texture = null
+		Eyewear = null
 
 	if loading["Neckwear"]:
 		Neckwear = loading["Neckwear"]
 		$Neckwear.texture = load(Neckwear)
 	else:
 		$Neckwear.texture = null
+		Neckwear = null
 
 	if loading["FullBodywear"]:
 		FullBodywear = loading["FullBodywear"]
 		$FullBodywear.texture = load(FullBodywear)
 	else:
 		$FullBodywear.texture = null
+		FullBodywear = null
 
 	if loading["Wingwear"]:
 		Wingwear = loading["Wingwear"]
 		$Wingwear.texture = load(Wingwear)
 	else:
 		$Wingwear.texture = null
+		Wingwear = null
 
 	if loading["Footwear"]:
 		Footwear = loading["Footwear"]
 		$Footwear.texture = load(Footwear)
 	else:
 		$Footwear.texture = null
+		Footwear = null
 
 	Name = loading["Name"]
 
@@ -156,6 +171,7 @@ func generate_duck():
 
 
 func update_save():
+	print(ID)
 	for i in range(duck_dictionary.size()):
 		if duck_dictionary[i]["ID"] == ID:
 			duck_dictionary[i] = get_duck_data()

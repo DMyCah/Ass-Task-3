@@ -21,11 +21,6 @@ func _on_collection_button_pressed():
 	Globals.game_last_scene = "collection"
 	Globals.current_scene = "game_collection"
 
-func _on_inventory_button_pressed():
-	get_tree().change_scene_to_file("res://Game/game_inventory_scene.tscn")
-	Globals.game_last_scene = "inventory"
-	Globals.current_scene = "game_inventory"
-
 func _on_wardrobe_button_pressed():
 	get_tree().change_scene_to_file("res://Game/game_wardrobe_scene.tscn")
 	Globals.game_last_scene = "wardrobe"
@@ -35,3 +30,8 @@ func _on_shop_button_pressed():
 	get_tree().change_scene_to_file("res://Game/game_shop_scene.tscn")
 	Globals.game_last_scene = "shop"
 	Globals.current_scene = "game_shop"
+
+
+
+func _on_study_goals_button_pressed():
+	$Study_Goals_Panel.visible = true

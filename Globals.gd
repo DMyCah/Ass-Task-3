@@ -6,7 +6,7 @@ var break_timer_start = false
 var current_scene = "main_menu"
 var game_last_scene = "collection"
 var current_wardrobe_tab = "Headwear/"
-var wardrobe_duck = ""
+var displaying_duck_ID = ""
 
 func load_save_data():
 	timer_Mode = SaveManager.current_save_data["timer_Mode_Prefernce"]

@@ -1,0 +1,140 @@
+[gd_scene load_steps=5 format=3 uid="uid://dh1i54sipwrfa"]
+
+[ext_resource type="Script" path="res://Game/Goals/Goal.gd" id="1_oti5e"]
+[ext_resource type="Texture2D" uid="uid://b4w71h4mnqxj4" path="res://Assets/Icons/WormIcon.png" id="2_yola8"]
+[ext_resource type="PackedScene" uid="uid://ck1v1wt2aq572" path="res://rewards_notification.tscn" id="3_wjhpd"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_nvfwm"]
+
+[node name="Goal" type="Control"]
+custom_minimum_size = Vector2(2.08165e-12, 150)
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_oti5e")
+
+[node name="Component_Container" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(600, 2.08165e-12)
+layout_mode = 0
+offset_right = 600.0
+offset_bottom = 128.0
+theme_override_constants/separation = 7
+
+[node name="Goal_TextEdit" type="TextEdit" parent="Component_Container"]
+custom_minimum_size = Vector2(500, 35)
+layout_mode = 2
+size_flags_horizontal = 0
+placeholder_text = "Study Goal"
+wrap_mode = 1
+
+[node name="Target_Hours" type="Label" parent="Component_Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Target: "
+
+[node name="Complete_Hours" type="Label" parent="Component_Container"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Complete: "
+
+[node name="Progress" type="CenterContainer" parent="Component_Container"]
+layout_mode = 2
+
+[node name="Progress_Bar" type="ProgressBar" parent="Component_Container/Progress"]
+custom_minimum_size = Vector2(500, 20)
+layout_mode = 2
+size_flags_horizontal = 0
+max_value = 1.0
+show_percentage = false
+
+[node name="Save_Goal_Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 548.0
+offset_top = 34.0
+offset_right = 592.0
+offset_bottom = 65.0
+text = "Save"
+
+[node name="Delete_Goal_Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -28.0
+offset_right = -10.0
+offset_bottom = 31.0
+grow_horizontal = 0
+text = "X"
+
+[node name="Reward" type="Button" parent="."]
+layout_mode = 0
+offset_left = 524.0
+offset_top = 68.0
+offset_right = 594.0
+offset_bottom = 99.0
+alignment = 0
+
+[node name="Icon" type="TextureRect" parent="Reward"]
+layout_mode = 0
+offset_left = 43.0
+offset_top = 3.0
+offset_right = 68.0
+offset_bottom = 29.0
+texture = ExtResource("2_yola8")
+expand_mode = 1
+
+[node name="Confirm_Delete" type="TextureRect" parent="."]
+visible = false
+layout_mode = 1
+offset_left = 167.0
+offset_top = 11.0
+offset_right = 367.0
+offset_bottom = 91.0
+texture = SubResource("PlaceholderTexture2D_nvfwm")
+
+[node name="Cancel" type="Button" parent="Confirm_Delete"]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 41.0
+offset_right = 78.0
+offset_bottom = 72.0
+text = "Cancel"
+
+[node name="Label" type="Label" parent="Confirm_Delete"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 5.0
+offset_right = 145.0
+offset_bottom = 28.0
+text = "Delete Goal?"
+
+[node name="Confirm" type="Button" parent="Confirm_Delete"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_top = -39.0
+offset_right = -16.0
+offset_bottom = -8.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Confirm"
+
+[node name="Rewards_Notification" parent="." instance=ExtResource("3_wjhpd")]
+visible = false
+layout_mode = 1
+offset_left = 110.0
+offset_top = 156.0
+offset_right = 110.0
+offset_bottom = 156.0
+
+[connection signal="text_changed" from="Component_Container/Goal_TextEdit" to="." method="_on_goal_text_edit_text_changed"]
+[connection signal="pressed" from="Save_Goal_Button" to="." method="_on_save_goal_button_pressed"]
+[connection signal="pressed" from="Delete_Goal_Button" to="." method="_on_delete_goal_button_pressed"]
+[connection signal="pressed" from="Reward" to="." method="_on_reward_pressed"]
+[connection signal="pressed" from="Confirm_Delete/Cancel" to="." method="_on_cancel_pressed"]
+[connection signal="pressed" from="Confirm_Delete/Confirm" to="." method="_on_confirm_pressed"]

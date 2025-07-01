@@ -1,40 +1,53 @@
-[gd_scene load_steps=5 format=3 uid="uid://dh71g0df1smpy"]
+[gd_scene load_steps=6 format=3 uid="uid://dh71g0df1smpy"]
 
 [ext_resource type="Script" path="res://Game/game_collection_scene.gd" id="1_lc331"]
+[ext_resource type="Texture2D" uid="uid://banyh3jk08kc" path="res://Assets/Backgrounds/Barn.png" id="2_m5l4n"]
 [ext_resource type="PackedScene" uid="uid://coxax4yxcvi2g" path="res://UI/scene_changer.tscn" id="2_sy647"]
 [ext_resource type="PackedScene" uid="uid://cmc7bjuwnapv" path="res://Game/game_menu_bar.tscn" id="3_ixf0a"]
-
-[sub_resource type="Theme" id="Theme_17a74"]
-Label/font_sizes/font_size = 100
+[ext_resource type="Texture2D" uid="uid://dmnykx7mcoa4k" path="res://Assets/Backgrounds/NestLayer.png" id="3_pcbtu"]
 
 [node name="Game_Collection_Scene" type="Node2D"]
 script = ExtResource("1_lc331")
 
-[node name="Top_Layer" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="TextureRect" type="TextureRect" parent="Top_Layer"]
+[node name="TextureRect" type="TextureRect" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1080.0
+offset_bottom = 1920.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_m5l4n")
+expand_mode = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Top_Layer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -308.5
-offset_right = 308.5
-offset_bottom = 137.0
-grow_horizontal = 2
-theme = SubResource("Theme_17a74")
-text = "Collection
-"
-metadata/_edit_use_anchors_ = true
+[node name="Top_Layer" type="CanvasLayer" parent="."]
 
 [node name="Game_Menu_Bar" parent="Top_Layer" instance=ExtResource("3_ixf0a")]
 metadata/_edit_use_anchors_ = true
 
 [node name="Scene_Changer" parent="Top_Layer" instance=ExtResource("2_sy647")]
+
+[node name="Collection_Container" type="GridContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 149.0
+offset_top = 549.0
+offset_right = 940.0
+offset_bottom = 1219.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/h_separation = 9
+theme_override_constants/v_separation = 110
+columns = 5
+
+[node name="Nests" type="TextureRect" parent="."]
+offset_left = 98.0
+offset_top = 570.0
+offset_right = 2039.0
+offset_bottom = 2191.0
+scale = Vector2(0.435, 0.435)
+texture = ExtResource("3_pcbtu")

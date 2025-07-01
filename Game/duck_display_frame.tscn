@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bp8f4derc5xpw"]
+
+[ext_resource type="Script" path="res://Game/duck_display_frame.gd" id="1_tqqea"]
+[ext_resource type="PackedScene" uid="uid://cveodrtbufiop" path="res://Game/duck_base.tscn" id="1_u2o2s"]
+[ext_resource type="Texture2D" uid="uid://bd8y7o7w2568q" path="res://Assets/Backgrounds/Frame1.png" id="2_ksumf"]
+
+[node name="Duck_Display_Frame" type="Control"]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 200.0
+offset_bottom = 200.0
+script = ExtResource("1_tqqea")
+
+[node name="Frame" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 2048.0
+offset_bottom = 2048.0
+scale = Vector2(0.098, 0.098)
+texture = ExtResource("2_ksumf")
+
+[node name="Duck_Base" parent="." instance=ExtResource("1_u2o2s")]
+position = Vector2(100, 100)
+scale = Vector2(0.8, 0.8)
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt02vbbmvm160"]
+
+[ext_resource type="Texture2D" uid="uid://b3w8tjy2b8u26" path="res://Assets/Backgrounds/Frame2.png" id="1_kta20"]
+
+[node name="accessory_frame" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -880.0
+offset_bottom = -1720.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Frame" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_kta20")
+expand_mode = 1
+
+[node name="Accessory" type="Sprite2D" parent="."]

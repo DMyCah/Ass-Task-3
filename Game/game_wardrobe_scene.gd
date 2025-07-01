@@ -25,3 +25,4 @@ func _on_clear_accessory_button_pressed():
 func _on_save_button_pressed():
 	$Duck_Base.update_save()
 	SaveManager.save_game()
+	$Duck_Select_Menu.refresh_menu()

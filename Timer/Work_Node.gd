@@ -53,6 +53,7 @@ func _process(_delta):
 		$Work_Label.text = "%02d:%02d:%02d" % timer_duration()
 	elif Globals.work_timer_start == true:
 		$Work_Label.text = "%02d:%02d:%02d" % time_left()
+		
 
 
 func _on_hours_text_submitted(new_text):

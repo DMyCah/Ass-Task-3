@@ -8,8 +8,11 @@ var default_save_data = {
 		"ducks":[
 			
 		],
-		"money":"0",
-		"food":"0"
+		"goals":[
+			
+		],
+		"money":0,
+		"food":0
 	}
 var saves_dir = DirAccess.open("user://saves")
 var save_file = "DevTestData.save"
@@ -37,7 +40,9 @@ func reset_data():
 		var file = FileAccess.open("user://saves/"+save_file, FileAccess.WRITE)
 		file.store_string(JSON.stringify(default_save_data))
 		file.close()
+		var username = current_save_data["username"] 
 		current_save_data = default_save_data
+		current_save_data["username"] = username
 		print("Data Reset")
 		print(current_save_data)
 	else:

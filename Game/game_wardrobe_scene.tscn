@@ -1,12 +1,15 @@
-[gd_scene load_steps=12 format=3 uid="uid://db7nq6cx0kjmc"]
+[gd_scene load_steps=15 format=3 uid="uid://db7nq6cx0kjmc"]
 
 [ext_resource type="PackedScene" uid="uid://cmc7bjuwnapv" path="res://Game/game_menu_bar.tscn" id="1_8x2m7"]
 [ext_resource type="Script" path="res://Game/game_wardrobe_scene.gd" id="1_xadkr"]
+[ext_resource type="Texture2D" uid="uid://3siqixriyht5" path="res://Assets/Backgrounds/Curtains.png" id="2_pilg7"]
 [ext_resource type="Texture2D" uid="uid://c2xsqitgscjci" path="res://Assets/Backgrounds/Pedestal.png" id="3_kjnuj"]
 [ext_resource type="PackedScene" uid="uid://coxax4yxcvi2g" path="res://UI/scene_changer.tscn" id="3_l3bex"]
 [ext_resource type="PackedScene" uid="uid://cveodrtbufiop" path="res://Game/duck_base.tscn" id="3_l61xw"]
 [ext_resource type="Texture2D" uid="uid://dsfshkuh71hex" path="res://Assets/Shadow.png" id="4_g0dfq"]
 [ext_resource type="Script" path="res://Game/Wardrobe_Menu.gd" id="4_tbna3"]
+[ext_resource type="Script" path="res://Game/Duck_Select_Menu.gd" id="8_3vpro"]
+[ext_resource type="Script" path="res://Game/Create_duck_dev.gd" id="8_8tk2w"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_wun3g"]
 
@@ -21,17 +24,22 @@ bg_color = Color(1, 1, 1, 1)
 [node name="Game_Wardrobe_Scene" type="Node2D"]
 script = ExtResource("1_xadkr")
 
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 2480.0
+offset_bottom = 3508.0
+scale = Vector2(0.44, 0.44)
+texture = ExtResource("2_pilg7")
+
 [node name="Top_Layer" type="CanvasLayer" parent="."]
-layer = -1
 
 [node name="Game_Menu_Bar" parent="Top_Layer" instance=ExtResource("1_8x2m7")]
 
 [node name="Scene_Changer" parent="Top_Layer" instance=ExtResource("3_l3bex")]
 
-[node name="TextureRect" type="TextureRect" parent="Top_Layer"]
-offset_top = 600.0
+[node name="Pedestal" type="TextureRect" parent="."]
+offset_top = 700.0
 offset_right = 1080.0
-offset_bottom = 1680.0
+offset_bottom = 1780.0
 texture = ExtResource("3_kjnuj")
 
 [node name="Wardrobe_Menu" type="Control" parent="."]
@@ -118,6 +126,11 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Clear"
 
+[node name="GridContainer" type="GridContainer" parent="Wardrobe_Menu"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Save_Button" type="Button" parent="."]
 offset_left = 928.0
 offset_top = 1270.0
@@ -128,13 +141,46 @@ text = "Save"
 
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(0, 0, 0, 0.447059)
-position = Vector2(570, 891)
+position = Vector2(570, 991)
 scale = Vector2(0.429, 0.429)
 texture = ExtResource("4_g0dfq")
 
 [node name="Duck_Base" parent="." instance=ExtResource("3_l61xw")]
-position = Vector2(527, 643)
+position = Vector2(527, 743)
 scale = Vector2(3, 3)
+
+[node name="Create_duck_dev" type="Button" parent="."]
+offset_left = 33.0
+offset_top = 404.0
+offset_right = 136.0
+offset_bottom = 435.0
+text = "Create Duck"
+script = ExtResource("8_8tk2w")
+
+[node name="Duck_Select_Menu" type="HBoxContainer" parent="."]
+offset_left = 190.0
+offset_top = 25.0
+offset_right = 890.0
+offset_bottom = 225.0
+size_flags_vertical = 3
+script = ExtResource("8_3vpro")
+
+[node name="Left_Button" type="Button" parent="Duck_Select_Menu"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Duck_Scroller" type="ScrollContainer" parent="Duck_Select_Menu"]
+custom_minimum_size = Vector2(600, 2.08165e-12)
+layout_mode = 2
+
+[node name="Duck_Container" type="HBoxContainer" parent="Duck_Select_Menu/Duck_Scroller"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Right_Button" type="Button" parent="Duck_Select_Menu"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [connection signal="pressed" from="Wardrobe_Menu/Tab_Organiser/Headwear_Tab" to="Wardrobe_Menu" method="_on_headwear_tab_pressed"]
 [connection signal="pressed" from="Wardrobe_Menu/Tab_Organiser/Eyewear_Tab" to="Wardrobe_Menu" method="_on_eyewear_tab_pressed"]
@@ -145,3 +191,4 @@ scale = Vector2(3, 3)
 [connection signal="item_selected" from="Wardrobe_Menu/Item_Display" to="." method="_on_item_display_item_selected"]
 [connection signal="pressed" from="Wardrobe_Menu/Item_Display/Clear_Accessory_Button" to="." method="_on_clear_accessory_button_pressed"]
 [connection signal="pressed" from="Save_Button" to="." method="_on_save_button_pressed"]
+[connection signal="pressed" from="Create_duck_dev" to="Create_duck_dev" method="_on_pressed"]

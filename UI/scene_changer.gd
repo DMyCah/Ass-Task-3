@@ -9,11 +9,19 @@ func _process(delta):
 	pass
 
 func _on_timer_pressed():
+	#doesnt work?
+	$HBoxContainer/Timer/Timer_Shade.visible = true
+	$HBoxContainer/Ducks/Ducks_Shade.visible = false
+	
 	get_tree().change_scene_to_file("res://Timer/timer_scene.tscn")
 	Globals.current_scene = "timer"
 	$Settings_Button.visible = true
 
 func _on_ducks_pressed():
+	#doesnt work?
+	$HBoxContainer/Ducks/Ducks_Shade.visible = true
+	$HBoxContainer/Timer/Timer_Shade.visible = false
+	
 	if Globals.game_last_scene == "collection":
 		get_tree().change_scene_to_file("res://Game/game_collection_scene.tscn")
 		Globals.current_scene = "game_collection"
