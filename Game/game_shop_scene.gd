@@ -59,6 +59,12 @@ func refresh_shop(category):
 	#Removes children displayed in shop
 	for child in $Item_Container.get_children():
 		child.queue_free()
+		
+	#Clear duck accessory display
+	if displaying_item_index:
+		$Duck_Display.change_accessory(Globals.item_shop[displaying_item_index]["category"], "clear")
+		$Payment_Panel.visible = false
+	
 	for i in range(Globals.item_shop.size()):
 		#Iterates through all items in the shop and checks if they are in the category requests
 		if Globals.item_shop[i]["category"] == category:

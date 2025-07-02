@@ -97,7 +97,16 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Scene_Changer" parent="Top_Layer" instance=ExtResource("2_2npsy")]
 
-[node name="TextureRect3" type="TextureRect" parent="Top_Layer"]
+[node name="Mission_Board" type="TextureRect" parent="Top_Layer"]
+offset_left = 286.0
+offset_top = 707.0
+offset_right = 830.0
+offset_bottom = 942.0
+texture = ExtResource("4_k0hfj")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Break_Board" type="TextureRect" parent="Top_Layer"]
 offset_left = 278.0
 offset_top = 500.0
 offset_right = 822.0
@@ -106,17 +115,7 @@ texture = ExtResource("4_k0hfj")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect4" type="TextureRect" parent="Top_Layer/TextureRect3"]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 207.0
-offset_right = 552.0
-offset_bottom = 442.0
-texture = ExtResource("4_k0hfj")
-expand_mode = 1
-stretch_mode = 5
-
-[node name="TextureRect2" type="TextureRect" parent="Top_Layer"]
+[node name="Timer_Board" type="TextureRect" parent="Top_Layer"]
 offset_left = 163.0
 offset_top = 300.0
 offset_right = 928.0

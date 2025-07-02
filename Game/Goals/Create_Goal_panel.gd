@@ -33,7 +33,7 @@ func _on_target_hours_input_text_changed(new_text):
 #Creates a goal object within goal_container to be displayed
 func _on_submit_pressed():
 	#Sanitisation
-	var sanitise = SaveManager.filter_input_username("other",goal)
+	var sanitise = SaveManager.filter_input_username("other",Goal_Input.get_text())
 	if sanitise == false:
 		$"../Filter_Detection".detection("INPUT")
 	else:

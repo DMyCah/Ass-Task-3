@@ -19,6 +19,7 @@ func _ready():
 	elif mode == "Pomodoro":
 		display_Pomodoro()
 	fill_missions()
+	$Top_Layer/Scene_Changer.scene_Changed.connect(scene_change_during_timer)
 
 #Show break time if pomodoro
 func display_Normal():
@@ -42,6 +43,8 @@ func timer_running():
 	$Work_Node/Work_Setup_Display.visible = false
 	$Work_Node/Work_Label.visible = true
 	
+	$Missions_Option.disabled = true
+	
 	
 	$Break_Node/Break_Setup_Display.visible = false
 	if mode == "Pomodoro":
@@ -64,6 +67,8 @@ func timer_setup():
 	$End_Confirm_Node.visible = false
 	
 	$Top_Layer/Background.texture = load("res://Assets/Backgrounds/Pond.png")
+	
+	$Missions_Option.disabled = false
 	
 	if mode == "Pomodoro":
 		$Break_Node/Break_Setup_Display.visible = true
@@ -92,6 +97,7 @@ func _on_normal_pressed():
 func _on_start_button_pressed():
 	_on_missions_option_item_selected(option_index)
 	$Work_Node/Work_Timer.start()
+	Globals.work_timer_start = true
 	$Top_Layer/Background.texture = load("res://Assets/Backgrounds/PondWorm.png")
 	timer_running()
 
@@ -143,18 +149,25 @@ func _on_cancel_button_pressed():
 
 #Ends timers
 func _on_confirm_button_pressed():
+	end_timer()
+	
+func end_timer(endType=null):
 	$Work_Node/Work_Timer.stop()
 	$Break_Node/Break_Timer.stop()
 	$Work_Node/Work_Timer.paused = false
 	$Break_Node/Break_Timer.paused = false
 	$Pause_Button.text = "Pause"
-	
+	Globals.work_timer_start = false
+	Globals.break_timer_start = false
 	if mission_selected != null:
 		#Checks if the mission selected has been completed
 		check_mission_complete()
 	#Rewards user after calculating rewards
 	calculate_rewards(total_time)
-	$Rewards_Notification.display_rewards_earned(rewards_currency, rewards_food)
+	#Checks if ended by navigation change or normal, prevents error of trying to display notification
+	#Without the scene to render timer into
+	if !endType:
+		$Rewards_Notification.display_rewards_earned(rewards_currency, rewards_food)
 	#Reset timer
 	timer_setup()
 	SaveManager.save_game()
@@ -222,3 +235,8 @@ func calculate_rewards(time):
 	rewards_food = int(time/10)
 	SaveManager.current_save_data["money"] += rewards_currency
 	SaveManager.current_save_data["food"] += rewards_food
+
+#If scene is changed while timer is running, end timer
+func scene_change_during_timer(scene):
+	if scene != "timer":
+		end_timer("NavigationChange")

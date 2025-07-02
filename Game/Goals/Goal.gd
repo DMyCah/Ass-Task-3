@@ -17,6 +17,9 @@ var goal_reward
 var reward_claimed = false
 var reward_rate = 72
 
+func _ready():
+	update_text_edit_size()
+
 #Takes in values when called to allocate to CURRENT instance of goal
 func generate_goal(goal, target):
 	goal_goal = goal
@@ -128,7 +131,8 @@ func set_text_display(index):
 		$Component_Container/Complete_Hours.text = "Complete: " + str(complete_minute) + " minutes"
 
 
-func _on_goal_text_edit_text_changed():
+#Update the text edit goal box size to fit text
+func update_text_edit_size():
 	#Visual changes for goal text that is created to stay nice
 	if Goal_TextEdit.get_line_count() == 1:
 		Goal_TextEdit.scroll_fit_content_height = true
@@ -143,16 +147,18 @@ func _on_goal_text_edit_text_changed():
 	var line_height = Goal_TextEdit.get_line_height()
 	var desired_height = line_count * line_height + 4
 	Goal_TextEdit.custom_minimum_size.y = min(desired_height, 90)
-	
-	var sanitise = SaveManager.filter_input_username("other",Goal_TextEdit.text)
+
+
+#Update display and sanitise input
+func _on_goal_text_edit_text_changed():
+	update_text_edit_size()
+	var sanitise = SaveManager.filter_input_username("other",Goal_TextEdit.get_text())
 	if sanitise == false:
 		Goal_TextEdit.text = goal_goal
 		$Filter_Detection.detection("INPUT")
 	else:
 		#Set goal data to match the changed text
 		goal_goal = Goal_TextEdit.text
-
-
 
 
 #Finds the goal in the data library and removes it, then saves

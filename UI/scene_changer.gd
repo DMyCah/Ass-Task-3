@@ -1,5 +1,7 @@
 extends Control
 
+signal scene_Changed
+
 #Bottom navigation
 
 func _on_timer_pressed():
@@ -24,6 +26,7 @@ func _on_ducks_pressed():
 	elif Globals.game_last_scene == "shop":
 		get_tree().change_scene_to_file("res://Game/game_shop_scene.tscn")
 		Globals.current_scene = "game_shop"
+	emit_signal("scene_Changed", Globals.current_scene)
 	$Settings_Button.visible = true
 	SaveManager.save_game()
 
