@@ -1,8 +1,45 @@
-[gd_scene load_steps=4 format=3 uid="uid://p5dqhc163c48"]
+[gd_scene load_steps=35 format=3 uid="uid://p5dqhc163c48"]
 
 [ext_resource type="Texture2D" uid="uid://kv4cekcak8x0" path="res://Assets/Backgrounds/Store.png" id="1_8aon4"]
 [ext_resource type="PackedScene" uid="uid://cmc7bjuwnapv" path="res://Game/game_menu_bar.tscn" id="1_73mle"]
+[ext_resource type="Script" path="res://Game/game_shop_scene.gd" id="1_axjxv"]
+[ext_resource type="Texture2D" uid="uid://d12qlqu72iv6e" path="res://Assets/Backgrounds/BigFrame1.png" id="2_2pt5i"]
 [ext_resource type="PackedScene" uid="uid://coxax4yxcvi2g" path="res://UI/scene_changer.tscn" id="2_sincq"]
+[ext_resource type="Texture2D" uid="uid://dodvnpgeei6fi" path="res://Assets/Backgrounds/Log.png" id="3_xm3wv"]
+[ext_resource type="Texture2D" uid="uid://dsfshkuh71hex" path="res://Assets/Shadow.png" id="5_32kdl"]
+[ext_resource type="Script" path="res://Game/Duck_Display.gd" id="6_eks55"]
+[ext_resource type="Texture2D" uid="uid://c000a12kvfgnm" path="res://Assets/Backgrounds/PaymentBackground.png" id="6_et6q8"]
+[ext_resource type="Texture2D" uid="uid://yn2y5hp4hy1y" path="res://Assets/Icons/WoodDuck.png" id="7_84hhq"]
+[ext_resource type="Texture2D" uid="uid://k14c8jb3erqj" path="res://Assets/Button/PurchaseButton.png" id="7_lnntf"]
+[ext_resource type="Texture2D" uid="uid://0b8fmf3tv2hf" path="res://Assets/Icons/Duck.png" id="8_7d76y"]
+[ext_resource type="Script" path="res://Game/Headwear.gd" id="8_pu4c0"]
+[ext_resource type="Texture2D" uid="uid://cdbatal7d62f7" path="res://Assets/Icons/Head.png" id="8_wyje1"]
+[ext_resource type="Script" path="res://Game/Eyewear.gd" id="9_5cepq"]
+[ext_resource type="Texture2D" uid="uid://b1i33pn3pdmum" path="res://Assets/Icons/Face.png" id="9_c7ajb"]
+[ext_resource type="Script" path="res://Game/Neckwear.gd" id="10_d8yn2"]
+[ext_resource type="Texture2D" uid="uid://cnugx4w5qy008" path="res://Assets/Icons/Neck.png" id="10_x0t2w"]
+[ext_resource type="Script" path="res://Game/FullBodyWear.gd" id="11_63hhj"]
+[ext_resource type="Texture2D" uid="uid://xp6tx1birwc7" path="res://Assets/Icons/Fullbody.png" id="11_fenkp"]
+[ext_resource type="Script" path="res://Game/Wingwear.gd" id="12_4o5lk"]
+[ext_resource type="Texture2D" uid="uid://dt4deos20bxe6" path="res://Assets/Icons/Wing.png" id="12_oioox"]
+[ext_resource type="Texture2D" uid="uid://0y1rk4txsrhn" path="res://Assets/Icons/Feet.png" id="13_nv26c"]
+[ext_resource type="Script" path="res://Game/Footwear.gd" id="13_rtj56"]
+[ext_resource type="Texture2D" uid="uid://dv03ubfyiskn8" path="res://Assets/Icons/Clear.png" id="14_5il8n"]
+[ext_resource type="Texture2D" uid="uid://d3y7ta05yd5xg" path="res://Assets/Icons/DuckBox.png" id="14_vufin"]
+[ext_resource type="Texture2D" uid="uid://b4w71h4mnqxj4" path="res://Assets/Icons/WormIcon.png" id="15_hrekc"]
+[ext_resource type="Texture2D" uid="uid://hrsl5wdfr26u" path="res://Assets/Backgrounds/Background1.png" id="26_fqcbb"]
+[ext_resource type="Texture2D" uid="uid://b6plwfcvlrdck" path="res://Assets/Icons/BreadIcon.png" id="28_invim"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_f1ybk"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_jrg07"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lnfly"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y8bt1"]
+radius = 100.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s1qfc"]
 
 [node name="game_shop_scene" type="Control"]
 layout_mode = 3
@@ -11,6 +48,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_axjxv")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = -175.0
+offset_right = 1080.0
+offset_bottom = 1745.0
+texture = ExtResource("1_8aon4")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_top = 1742.0
+offset_right = 1080.0
+offset_bottom = 1942.0
+color = Color(0.976471, 0.835294, 0.592157, 1)
 
 [node name="Shop" type="Label" parent="."]
 layout_mode = 0
@@ -20,15 +72,332 @@ theme_override_font_sizes/font_size = 100
 text = "shop
 "
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="Log" type="TextureRect" parent="."]
 layout_mode = 0
-offset_top = -175.0
-offset_right = 1080.0
-offset_bottom = 1745.0
-texture = ExtResource("1_8aon4")
+offset_left = 63.0
+offset_top = 564.0
+offset_right = 863.0
+offset_bottom = 1364.0
+texture = ExtResource("3_xm3wv")
+expand_mode = 1
+
+[node name="Item_Container_Background" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = -128.0
+offset_top = 1357.0
+offset_right = 1201.0
+offset_bottom = 1893.0
+texture = ExtResource("2_2pt5i")
+expand_mode = 1
+
+[node name="Shadow" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 0.447059)
+position = Vector2(456, 1086)
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("5_32kdl")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Game_Menu_Bar" parent="CanvasLayer" instance=ExtResource("1_73mle")]
 
 [node name="Scene_Changer" parent="CanvasLayer" instance=ExtResource("2_sincq")]
+
+[node name="Button_Container" type="HBoxContainer" parent="."]
+layout_mode = 2
+offset_left = 1.0
+offset_top = 1261.0
+offset_right = 1081.0
+offset_bottom = 1423.0
+theme_override_constants/separation = 0
+
+[node name="Duck" type="Button" parent="Button_Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/icon_max_width = 145
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f1ybk")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jrg07")
+icon = ExtResource("8_7d76y")
+
+[node name="Head" type="Button" parent="Button_Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/icon_max_width = 145
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f1ybk")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jrg07")
+icon = ExtResource("8_wyje1")
+
+[node name="Eye" type="Button" parent="Button_Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/icon_max_width = 145
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f1ybk")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jrg07")
+icon = ExtResource("9_c7ajb")
+
+[node name="Neck" type="Button" parent="Button_Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/icon_max_width = 145
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f1ybk")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jrg07")
+icon = ExtResource("10_x0t2w")
+
+[node name="Body" type="Button" parent="Button_Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/icon_max_width = 145
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f1ybk")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jrg07")
+icon = ExtResource("11_fenkp")
+
+[node name="Wing" type="Button" parent="Button_Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/icon_max_width = 145
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f1ybk")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jrg07")
+icon = ExtResource("12_oioox")
+
+[node name="Foot" type="Button" parent="Button_Container"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/icon_max_width = 145
+theme_override_styles/normal = SubResource("StyleBoxEmpty_f1ybk")
+toggle_mode = true
+button_group = SubResource("ButtonGroup_jrg07")
+icon = ExtResource("13_nv26c")
+
+[node name="Item_Container" type="GridContainer" parent="."]
+layout_mode = 0
+offset_top = 1420.0
+offset_right = 1080.0
+offset_bottom = 1820.0
+columns = 7
+
+[node name="Clear" type="Button" parent="."]
+layout_mode = 0
+offset_left = 980.0
+offset_top = 1727.0
+offset_right = 1080.0
+offset_bottom = 1827.0
+theme_override_constants/icon_max_width = 100
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lnfly")
+icon = ExtResource("14_5il8n")
+
+[node name="Duck_Display" type="CharacterBody2D" parent="."]
+position = Vector2(394, 759)
+scale = Vector2(4, 4)
+script = ExtResource("6_eks55")
+
+[node name="DuckCollisionShape" type="CollisionShape2D" parent="Duck_Display"]
+visible = false
+shape = SubResource("CircleShape2D_y8bt1")
+
+[node name="Body" type="Sprite2D" parent="Duck_Display"]
+scale = Vector2(0.143, 0.143)
+texture = ExtResource("7_84hhq")
+
+[node name="Headwear" type="Sprite2D" parent="Duck_Display"]
+scale = Vector2(0.143, 0.143)
+script = ExtResource("8_pu4c0")
+
+[node name="Eyewear" type="Sprite2D" parent="Duck_Display"]
+scale = Vector2(0.143, 0.143)
+script = ExtResource("9_5cepq")
+
+[node name="Neckwear" type="Sprite2D" parent="Duck_Display"]
+scale = Vector2(0.143, 0.143)
+script = ExtResource("10_d8yn2")
+
+[node name="FullBodywear" type="Sprite2D" parent="Duck_Display"]
+scale = Vector2(0.143, 0.143)
+script = ExtResource("11_63hhj")
+
+[node name="Wingwear" type="Sprite2D" parent="Duck_Display"]
+scale = Vector2(0.143, 0.143)
+script = ExtResource("12_4o5lk")
+
+[node name="Footwear" type="Sprite2D" parent="Duck_Display"]
+scale = Vector2(0.143, 0.143)
+script = ExtResource("13_rtj56")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Duck_Display"]
+
+[node name="Crate" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 258.0
+offset_top = 1375.0
+offset_right = 758.0
+offset_bottom = 1875.0
+texture = ExtResource("14_vufin")
+expand_mode = 1
+
+[node name="Congrats_message" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 805.0
+offset_top = 856.0
+offset_right = 845.0
+offset_bottom = 896.0
+
+[node name="Total_Money" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 651.0
+offset_top = 12.0
+offset_right = 915.0
+offset_bottom = 115.0
+texture = ExtResource("26_fqcbb")
+expand_mode = 1
+
+[node name="Money" type="Label" parent="Total_Money"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 17.0
+offset_right = 49.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 50
+
+[node name="worm" type="TextureRect" parent="Total_Money/Money"]
+layout_mode = 0
+offset_left = 186.0
+offset_right = 256.0
+offset_bottom = 70.0
+texture = ExtResource("15_hrekc")
+expand_mode = 1
+
+[node name="Total_Food" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 651.0
+offset_top = 127.0
+offset_right = 915.0
+offset_bottom = 230.0
+texture = ExtResource("26_fqcbb")
+expand_mode = 1
+
+[node name="Food" type="Label" parent="Total_Food"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 17.0
+offset_right = 49.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 50
+
+[node name="bread" type="TextureRect" parent="Total_Food/Food"]
+layout_mode = 0
+offset_left = 186.0
+offset_right = 256.0
+offset_bottom = 70.0
+texture = ExtResource("28_invim")
+expand_mode = 1
+
+[node name="Payment_Panel" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 805.0
+offset_top = 856.0
+offset_right = 1080.0
+offset_bottom = 1153.0
+texture = ExtResource("6_et6q8")
+expand_mode = 1
+
+[node name="Final" type="Label" parent="Payment_Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 227.0
+offset_right = 118.0
+offset_bottom = 282.0
+theme_override_font_sizes/font_size = 40
+text = "Final:"
+
+[node name="Cost" type="Label" parent="Payment_Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 107.0
+offset_right = 100.0
+offset_bottom = 162.0
+theme_override_font_sizes/font_size = 40
+text = "Cost"
+
+[node name="Current" type="Label" parent="Payment_Panel"]
+layout_mode = 0
+offset_left = 16.0
+offset_top = 7.0
+offset_right = 164.0
+offset_bottom = 62.0
+theme_override_font_sizes/font_size = 40
+text = "Current"
+
+[node name="Current_num" type="Label" parent="Payment_Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 56.0
+offset_right = 47.0
+offset_bottom = 111.0
+theme_override_font_sizes/font_size = 40
+
+[node name="Cost_num" type="Label" parent="Payment_Panel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 157.0
+offset_right = 47.0
+offset_bottom = 212.0
+theme_override_font_sizes/font_size = 40
+
+[node name="Icons" type="Control" parent="Payment_Panel"]
+anchors_preset = 0
+offset_left = 201.0
+offset_top = 55.0
+offset_right = 241.0
+offset_bottom = 95.0
+
+[node name="Icon3" type="TextureRect" parent="Payment_Panel/Icons"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 170.0
+offset_right = 82.0
+offset_bottom = 240.0
+texture = ExtResource("15_hrekc")
+expand_mode = 1
+
+[node name="Icon" type="TextureRect" parent="Payment_Panel/Icons"]
+layout_mode = 0
+offset_right = 70.0
+offset_bottom = 70.0
+texture = ExtResource("15_hrekc")
+expand_mode = 1
+
+[node name="Icon2" type="TextureRect" parent="Payment_Panel/Icons"]
+layout_mode = 0
+offset_left = -2.0
+offset_top = 91.0
+offset_right = 68.0
+offset_bottom = 161.0
+texture = ExtResource("15_hrekc")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Payment_Panel"]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 301.0
+offset_right = 1066.0
+offset_bottom = 586.0
+scale = Vector2(0.25, 0.25)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_s1qfc")
+icon = ExtResource("7_lnntf")
+
+[connection signal="pressed" from="Button_Container/Duck" to="." method="_on_duck_pressed"]
+[connection signal="pressed" from="Button_Container/Head" to="." method="_on_head_pressed"]
+[connection signal="pressed" from="Button_Container/Eye" to="." method="_on_eye_pressed"]
+[connection signal="pressed" from="Button_Container/Neck" to="." method="_on_neck_pressed"]
+[connection signal="pressed" from="Button_Container/Body" to="." method="_on_body_pressed"]
+[connection signal="pressed" from="Button_Container/Wing" to="." method="_on_wing_pressed"]
+[connection signal="pressed" from="Button_Container/Foot" to="." method="_on_foot_pressed"]
+[connection signal="pressed" from="Clear" to="." method="_on_clear_pressed"]
+[connection signal="gui_input" from="Crate" to="." method="_on_crate_gui_input"]
+[connection signal="pressed" from="Payment_Panel/Button" to="." method="_on_button_pressed"]

@@ -1,16 +1,30 @@
-[gd_scene load_steps=8 format=3 uid="uid://beuo5ctax211p"]
+[gd_scene load_steps=17 format=3 uid="uid://beuo5ctax211p"]
 
 [ext_resource type="PackedScene" uid="uid://coxax4yxcvi2g" path="res://UI/scene_changer.tscn" id="1_10wqp"]
 [ext_resource type="Script" path="res://Setting/settings_scene.gd" id="1_imv0h"]
+[ext_resource type="Texture2D" uid="uid://peqybq2wg55m" path="res://Assets/Backgrounds/Settings.png" id="2_lq75u"]
 [ext_resource type="Script" path="res://Setting/Reset_Confirm_Node.gd" id="3_28bcq"]
 [ext_resource type="Script" path="res://Setting/Delete_Confirm_Node.gd" id="4_pkt1r"]
+[ext_resource type="Texture2D" uid="uid://cx82wl0dgfx4l" path="res://Assets/Backgrounds/ResetWarning.png" id="5_gvi2n"]
+[ext_resource type="Texture2D" uid="uid://b7uvdnfdujvpu" path="res://Assets/Backgrounds/DeleteWarning.png" id="7_irdei"]
 
-[sub_resource type="Theme" id="Theme_n1cxc"]
-Label/font_sizes/font_size = 100
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lcb8f"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ciwbr"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mo2ml"]
 
-[sub_resource type="Theme" id="Theme_813gp"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_78mo7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fa5ms"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uvj0a"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k6gxd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_agxkh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p6kea"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bo7l0"]
 
 [node name="Settings_Scene" type="Node2D"]
 script = ExtResource("1_imv0h")
@@ -24,18 +38,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Label" type="Label" parent="CanvasLayer"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -308.5
-offset_right = 308.5
-offset_bottom = 137.0
-grow_horizontal = 2
-theme = SubResource("Theme_n1cxc")
-text = "Settings Scene"
+texture = ExtResource("2_lq75u")
 metadata/_edit_use_anchors_ = true
 
 [node name="Scene_Changer" parent="CanvasLayer" instance=ExtResource("1_10wqp")]
@@ -46,14 +49,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 393.0
-offset_top = 1500.0
-offset_right = 687.0
-offset_bottom = 1577.0
+offset_left = 185.0
+offset_top = 1333.0
+offset_right = 837.0
+offset_bottom = 1440.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
-text = "Reset Data"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lcb8f")
 
 [node name="Delete_Data_Button" type="Button" parent="."]
 anchors_preset = 8
@@ -61,14 +64,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 393.0
-offset_top = 1600.0
-offset_right = 687.0
-offset_bottom = 1677.0
+offset_left = 203.0
+offset_top = 1482.0
+offset_right = 853.0
+offset_bottom = 1593.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
-text = "Delete Data"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mo2ml")
 
 [node name="Sign_Out_Button" type="Button" parent="."]
 anchors_preset = 8
@@ -76,14 +79,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 433.5
-offset_top = 1000.0
-offset_right = 646.5
-offset_bottom = 1077.0
+offset_left = 230.0
+offset_top = 599.0
+offset_right = 838.0
+offset_bottom = 786.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
-text = "Sign Out"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_78mo7")
 
 [node name="Reset_Confirm_Node" type="Control" parent="."]
 visible = false
@@ -117,35 +120,28 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -250.0
-offset_top = -109.0
+offset_top = -188.0
 offset_right = 250.0
-offset_bottom = 109.0
+offset_bottom = 170.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_ciwbr")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Reset_Confirm_Node/TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_813gp")
-theme_override_font_sizes/normal_font_size = 40
-bbcode_enabled = true
-text = "[center]Are you sure you want to reset your account?"
+texture = ExtResource("5_gvi2n")
+expand_mode = 1
 
 [node name="Cancel_Button" type="Button" parent="Reset_Confirm_Node/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 40.0
-offset_bottom = -10.0
+offset_left = 49.0
+offset_top = -179.0
+offset_right = 184.0
+offset_bottom = -116.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 40
-text = "Cancel"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fa5ms")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_uvj0a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k6gxd")
 
 [node name="Confirm_Button" type="Button" parent="Reset_Confirm_Node/TextureRect"]
 layout_mode = 1
@@ -154,14 +150,16 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -203.0
-offset_top = -73.0
-offset_right = -40.0
-offset_bottom = -10.0
+offset_left = -205.0
+offset_top = -182.0
+offset_right = -42.0
+offset_bottom = -119.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 40
-text = "Confirm"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_fa5ms")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_uvj0a")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k6gxd")
 
 [node name="Delete_Confirm_Node" type="Control" parent="."]
 visible = false
@@ -194,36 +192,29 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -250.0
-offset_top = -109.0
-offset_right = 250.0
-offset_bottom = 109.0
+offset_left = -254.0
+offset_top = -187.0
+offset_right = 246.0
+offset_bottom = 171.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_ciwbr")
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Delete_Confirm_Node/TextureRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_813gp")
-theme_override_font_sizes/normal_font_size = 40
-bbcode_enabled = true
-text = "[center]Are you sure you want to delete your account?"
+texture = ExtResource("7_irdei")
+expand_mode = 1
 
 [node name="Cancel_Button" type="Button" parent="Delete_Confirm_Node/TextureRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 40.0
-offset_bottom = -10.0
+offset_left = 43.0
+offset_top = -181.0
+offset_right = 192.0
+offset_bottom = -118.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 40
-text = "Cancel"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_agxkh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_p6kea")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bo7l0")
 
 [node name="Delete_Confirm_Button" type="Button" parent="Delete_Confirm_Node/TextureRect"]
 layout_mode = 1
@@ -232,14 +223,16 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -203.0
-offset_top = -73.0
-offset_right = -40.0
-offset_bottom = -10.0
+offset_left = -208.0
+offset_top = -180.0
+offset_right = -45.0
+offset_bottom = -117.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 40
-text = "Confirm"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_agxkh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_p6kea")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_bo7l0")
 
 [connection signal="pressed" from="Reset_Data_Button" to="." method="_on_reset_data_button_pressed"]
 [connection signal="pressed" from="Delete_Data_Button" to="." method="_on_delete_data_button_pressed"]

@@ -45,6 +45,7 @@ theme_override_constants/v_separation = 110
 columns = 5
 
 [node name="Nests" type="TextureRect" parent="."]
+visible = false
 offset_left = 98.0
 offset_top = 570.0
 offset_right = 2039.0

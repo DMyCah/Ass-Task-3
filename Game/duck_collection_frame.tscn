@@ -1,28 +1,79 @@
-[gd_scene load_steps=3 format=3 uid="uid://dcdox6y6bt5bi"]
+[gd_scene load_steps=5 format=3 uid="uid://dcdox6y6bt5bi"]
 
 [ext_resource type="Script" path="res://Game/duck_collection_frame.gd" id="1_n432v"]
 [ext_resource type="PackedScene" uid="uid://cveodrtbufiop" path="res://Game/duck_base.tscn" id="1_sat05"]
+[ext_resource type="Texture2D" uid="uid://hrsl5wdfr26u" path="res://Assets/Backgrounds/Background1.png" id="3_6e7e1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4aqoo"]
 
 [node name="Duck_Collection_Frame" type="Control"]
 custom_minimum_size = Vector2(150, 150)
+layout_direction = 1
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_right = -930.0
-offset_bottom = -1770.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 150.0
+offset_bottom = 150.0
+pivot_offset = Vector2(2.08165e-12, 110)
 script = ExtResource("1_n432v")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 0
+offset_right = 150.0
+offset_bottom = 150.0
 
 [node name="Duck_Base" parent="." instance=ExtResource("1_sat05")]
 position = Vector2(75, 75)
 scale = Vector2(0.6, 0.6)
+
+[node name="Info_display" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="Info_display"]
+layout_mode = 0
+offset_left = 24.0
+offset_top = -40.0
+offset_right = 134.0
+texture = ExtResource("3_6e7e1")
+expand_mode = 1
+
+[node name="Name" type="Label" parent="Info_display"]
+visible = false
+layout_mode = 0
+offset_left = 31.0
+offset_top = -104.0
+offset_right = 78.0
+offset_bottom = -81.0
+text = "Name"
+
+[node name="Level" type="Label" parent="Info_display"]
+visible = false
+layout_mode = 0
+offset_left = 32.0
+offset_top = -81.0
+offset_right = 73.0
+offset_bottom = -58.0
+text = "Level"
+
+[node name="Experience" type="Label" parent="Info_display"]
+visible = false
+layout_mode = 0
+offset_left = 34.0
+offset_top = -57.0
+offset_right = 74.0
+offset_bottom = -34.0
+text = "XP"
+
+[node name="Wardrobe_Button" type="Button" parent="Info_display"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = -35.0
+offset_right = 122.0
+offset_bottom = -4.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_4aqoo")
+text = "Wardrobe"
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="gui_input" from="TextureRect" to="." method="_on_texture_rect_gui_input"]
+[connection signal="mouse_exited" from="Duck_Base" to="." method="_on_duck_base_mouse_exited"]
+[connection signal="pressed" from="Info_display/Wardrobe_Button" to="." method="_on_wardrobe_button_pressed"]

@@ -1,9 +1,44 @@
-[gd_scene load_steps=4 format=3 uid="uid://cmc7bjuwnapv"]
+[gd_scene load_steps=24 format=3 uid="uid://cmc7bjuwnapv"]
 
 [ext_resource type="Script" path="res://Game/game_menu_bar.gd" id="1_7geo8"]
 [ext_resource type="PackedScene" uid="uid://hpqycr5ogjb1" path="res://Game/study_goals_panel.tscn" id="2_2cy5x"]
+[ext_resource type="Texture2D" uid="uid://do31io24lvxj5" path="res://Assets/Icons/Menu.png" id="2_243nn"]
+[ext_resource type="Texture2D" uid="uid://xm8xskbvw3vn" path="res://Assets/Icons/Barn.png" id="2_kumfu"]
+[ext_resource type="Texture2D" uid="uid://d1juu1kanl8gn" path="res://Assets/Icons/Shop.png" id="3_d4vyy"]
+[ext_resource type="Texture2D" uid="uid://badaa2hymw1ls" path="res://Assets/Icons/Wardrobe.png" id="4_a328i"]
+[ext_resource type="Texture2D" uid="uid://81h5wrvs7idf" path="res://Assets/Icons/Goals.png" id="7_7oop6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_80s0o"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3sl75"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ktuvq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fsmhq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pmi2k"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_v07tm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ib3ye"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_p2ak2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jk4k7"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3nlxs"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2y87c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ossel"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oxp2g"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aproa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_86s53"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cl32o"]
 
 [node name="Game_Menu_Bar" type="Control"]
 layout_mode = 3
@@ -18,41 +53,87 @@ script = ExtResource("1_7geo8")
 [node name="Menu_Box" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 930.0
-offset_top = 50.0
+offset_top = 58.0
 offset_right = 1080.0
-offset_bottom = 500.0
+offset_bottom = 508.0
 theme_override_constants/separation = 0
 
 [node name="Collection_Button" type="Button" parent="Menu_Box"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/icon_max_width = 150
+theme_override_styles/normal = SubResource("StyleBoxEmpty_80s0o")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3sl75")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ktuvq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_fsmhq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pmi2k")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_v07tm")
-text = "C"
+icon = ExtResource("2_kumfu")
 
 [node name="Shop_Button" type="Button" parent="Menu_Box"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/icon_max_width = 150
+theme_override_styles/normal = SubResource("StyleBoxEmpty_80s0o")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3sl75")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ktuvq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_fsmhq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pmi2k")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_v07tm")
-text = "S"
+icon = ExtResource("3_d4vyy")
 
 [node name="Wardrobe_Button" type="Button" parent="Menu_Box"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/icon_max_width = 150
+theme_override_styles/normal = SubResource("StyleBoxEmpty_80s0o")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_3sl75")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ktuvq")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_fsmhq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_pmi2k")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_v07tm")
-text = "W"
+icon = ExtResource("4_a328i")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 929.0
+offset_top = -6.0
+offset_right = 1083.0
+offset_bottom = 137.0
+texture = ExtResource("2_243nn")
+expand_mode = 1
 
 [node name="Menu_Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = 930.0
-offset_right = 1080.0
-offset_bottom = 50.0
+offset_left = 929.0
+offset_right = 1079.0
+offset_bottom = 59.0
+theme_override_constants/icon_max_width = 150
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ib3ye")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_p2ak2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jk4k7")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3nlxs")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2y87c")
 toggle_mode = true
 button_pressed = true
-text = "Menu
-"
+
+[node name="Study_Goals_Button" type="Button" parent="."]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 226.0
+offset_right = 160.0
+offset_bottom = 376.0
+theme_override_constants/icon_max_width = 150
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ossel")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_oxp2g")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_aproa")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_86s53")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_cl32o")
+icon = ExtResource("7_7oop6")
 
 [node name="Study_Goals_Panel" parent="." instance=ExtResource("2_2cy5x")]
 visible = false
@@ -68,15 +149,6 @@ offset_right = 840.0
 offset_bottom = 1200.0
 grow_horizontal = 1
 grow_vertical = 1
-
-[node name="Study_Goals_Button" type="Button" parent="."]
-layout_mode = 1
-offset_left = 10.0
-offset_top = 226.0
-offset_right = 160.0
-offset_bottom = 376.0
-theme_override_font_sizes/font_size = 35
-text = "Goals"
 
 [connection signal="pressed" from="Menu_Box/Collection_Button" to="." method="_on_collection_button_pressed"]
 [connection signal="pressed" from="Menu_Box/Shop_Button" to="." method="_on_shop_button_pressed"]

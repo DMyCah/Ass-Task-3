@@ -9,6 +9,7 @@ func _ready():
 		var goal_instance = goal_resource.instantiate()
 		$ScrollContainer/Goal_Container.add_child(goal_instance)
 		goal_instance.load_goal(goal_ID)
+		goal_instance.reward_claimed_mission.connect(reward_notification)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -31,7 +32,8 @@ func _on_submit_pressed():
 	$Create_Goal_panel/VBoxContainer/Goal_Input.text = ""
 	$Create_Goal_panel/VBoxContainer/Target_Hours_Input.text = ""
 
-
+func reward_notification(Money):
+	$Rewards_Notification.display_rewards_earned(Money, 0)
 
 func _on_background_shader_gui_input(event):
 	if event is InputEventMouseButton:

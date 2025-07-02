@@ -159,6 +159,7 @@ func _on_confirm_button_pressed():
 	calculate_rewards(total_time)
 	$Rewards_Notification.display_rewards_earned(rewards_currency, rewards_food)
 	timer_setup()
+	SaveManager.save_game()
 	
 
 
@@ -173,6 +174,7 @@ func _on_work_timer_timeout():
 	previous_time_elapsed = 0
 	total_time = 0
 	if mode == "Normal":
+		SaveManager.save_game()
 		timer_setup()
 	elif mode == "Pomodoro":
 		#$Work_Node/Work_Label.text = "%02d:%02d:%02d" % $Work_Node.timer_duration()
@@ -215,7 +217,7 @@ func check_mission_complete():
 
 
 func calculate_rewards(time):
-	rewards_currency = int(time/10)*6
-	rewards_food = int(time/10)*6
-	SaveManager.current_save_data["Money"] += rewards_currency
-	SaveManager.current_save_data["Food"] += rewards_food
+	rewards_currency = int(time/10)
+	rewards_food = int(time/10)
+	SaveManager.current_save_data["money"] += rewards_currency
+	SaveManager.current_save_data["food"] += rewards_food

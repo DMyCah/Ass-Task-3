@@ -2,6 +2,7 @@ extends CharacterBody2D
 
 var duck_dictionary = SaveManager.current_save_data["ducks"]
 
+
 var ID
 var Body
 var Headwear
@@ -14,13 +15,14 @@ var Name
 var Experience
 var Level
 
-
 func _ready():
 	set_data()
 	if !duck_dictionary:
 		create_duck_save()
-	load_duck(1)
-	Globals.displaying_duck_ID = ID
+		Globals.displaying_duck_ID = SaveManager.current_save_data["ducks"][0]["ID"]
+	if get_parent().get_name() == "Game_Wardrobe_Scene":
+		load_duck(Globals.displaying_duck_ID)
+	
 
 #Changes the texture on each individual part based on the path for the png given and which part to change
 func change_accessory(type, new_accessory_path):
@@ -70,13 +72,12 @@ func change_accessory(type, new_accessory_path):
 
 func load_duck(Loading_ID):
 	ID = Loading_ID
-	Globals.displaying_duck_ID = ID
-	var loading = duck_dictionary[ID-1]
+	var loading = duck_dictionary[find_duck_Index_with_ID(Loading_ID)]
 	if loading["Body"]:
 		Body = loading["Body"]
 		$Body.texture = load(Body)
 	else:
-		print("Error loading body for duck: " + ID)
+		print("Error loading body for duck: ")
 
 	if loading["Headwear"]:
 		Headwear = loading["Headwear"]
@@ -176,6 +177,10 @@ func update_save():
 		if duck_dictionary[i]["ID"] == ID:
 			duck_dictionary[i] = get_duck_data()
 
+func find_duck_Index_with_ID(finding_ID):
+	for i in range(duck_dictionary.size()):
+		if duck_dictionary[i]["ID"] == finding_ID:
+			return i
 
 func change_name(new_name):
 	Name = new_name
@@ -189,4 +194,7 @@ func set_data():
 	Level = 1
 
 
+
+func _duck_selected_wardrobe(Selected_ID):
+	load_duck(Selected_ID)
 

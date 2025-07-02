@@ -38,8 +38,12 @@ func _on_target_hours_input_text_changed(new_text):
 
 
 func _on_submit_pressed():
-	var goal_instance = goal_resource.instantiate()
-	goal_instance.create_goal(goal, target)
-	get_parent().get_node("ScrollContainer/Goal_Container").add_child(goal_instance)
-	goals.append(goal_instance)
+	var sanitise = SaveManager.filter_input_username("other",goal)
+	if sanitise == false:
+		$"../Filter_Detection".detection("INPUT")
+	else:
+		var goal_instance = goal_resource.instantiate()
+		goal_instance.create_goal(goal, target)
+		get_parent().get_node("ScrollContainer/Goal_Container").add_child(goal_instance)
+		goals.append(goal_instance)
 

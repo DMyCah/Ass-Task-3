@@ -1,9 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://dvupwbyodn3qy"]
+[gd_scene load_steps=23 format=3 uid="uid://dvupwbyodn3qy"]
 
 [ext_resource type="Script" path="res://Login/login_scene.gd" id="1_ej1uq"]
 [ext_resource type="Script" path="res://Login/Opening_Panel.gd" id="2_3jspj"]
+[ext_resource type="Texture2D" uid="uid://bjlv1qsdpldxk" path="res://Assets/Backgrounds/opening.png" id="3_ckqkp"]
 [ext_resource type="Script" path="res://Login/Login_Panel.gd" id="3_wite3"]
 [ext_resource type="Script" path="res://Login/Create_Panel.gd" id="4_xmuki"]
+[ext_resource type="Texture2D" uid="uid://b4e11plxg1j54" path="res://Assets/Backgrounds/Login.png" id="5_iabma"]
+[ext_resource type="Texture2D" uid="uid://pg5ids8i8nwk" path="res://Assets/Backgrounds/Create.png" id="5_oghwu"]
+[ext_resource type="PackedScene" uid="uid://cyi0hrshfraqh" path="res://filter_detection.tscn" id="8_d50p5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fe21t"]
 bg_color = Color(1, 1, 1, 1)
@@ -11,10 +15,35 @@ bg_color = Color(1, 1, 1, 1)
 [sub_resource type="Theme" id="Theme_q8bqn"]
 Panel/styles/panel = SubResource("StyleBoxFlat_fe21t")
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t1olp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_16e3m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l1iq0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c6wq6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tbned"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eyky4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6ga38"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iok52"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_udjel"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eekh8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lxfki"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b4b4g"]
+
 [node name="Login_Scene" type="Node2D"]
 script = ExtResource("1_ej1uq")
 
 [node name="Panel" type="Panel" parent="."]
+visible = false
 offset_right = 1080.0
 offset_bottom = 1920.0
 size_flags_horizontal = 3
@@ -57,6 +86,12 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("2_3jspj")
 
+[node name="OpeningBackground" type="TextureRect" parent="Opening_Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_ckqkp")
+
 [node name="Login_Panel_Button" type="Button" parent="Opening_Panel"]
 layout_mode = 1
 anchors_preset = 8
@@ -64,14 +99,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 470.0
-offset_top = 300.0
-offset_right = 610.0
-offset_bottom = 377.0
+offset_left = 235.0
+offset_top = 727.0
+offset_right = 839.0
+offset_bottom = 847.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
-text = "Login"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_t1olp")
 
 [node name="Create_Panel_Button" type="Button" parent="Opening_Panel"]
 layout_mode = 1
@@ -80,14 +115,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 455.5
-offset_top = 600.0
-offset_right = 624.5
-offset_bottom = 677.0
+offset_left = 238.0
+offset_top = 917.0
+offset_right = 825.0
+offset_bottom = 1037.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
-text = "Create"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_16e3m")
 
 [node name="Login_Panel" type="Control" parent="."]
 visible = false
@@ -95,16 +130,22 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("3_wite3")
 
+[node name="LoginBackground" type="TextureRect" parent="Login_Panel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("5_iabma")
+
 [node name="Valid_Username_Label" type="Label" parent="Login_Panel"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 319.0
-offset_top = 350.0
-offset_right = 761.0
-offset_bottom = 392.0
+offset_left = 318.0
+offset_top = 386.0
+offset_right = 760.0
+offset_bottom = 428.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -118,13 +159,18 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 315.0
-offset_top = 400.0
-offset_right = 765.0
-offset_bottom = 477.0
+offset_left = 142.0
+offset_top = 483.0
+offset_right = 928.0
+offset_bottom = 589.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.509286, 0.509286, 0.509286, 1)
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_l1iq0")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_c6wq6")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_tbned")
 placeholder_text = "Username"
 
 [node name="Login" type="Button" parent="Login_Panel"]
@@ -134,14 +180,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 470.0
-offset_top = 600.0
-offset_right = 610.0
-offset_bottom = 677.0
+offset_left = 253.0
+offset_top = 735.0
+offset_right = 824.0
+offset_bottom = 834.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
-text = "Login"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_eyky4")
 
 [node name="Back" type="Button" parent="Login_Panel"]
 layout_mode = 1
@@ -150,15 +196,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 478.0
-offset_top = 1300.0
-offset_right = 602.0
-offset_bottom = 1377.0
+offset_left = 363.0
+offset_top = 1631.0
+offset_right = 710.0
+offset_bottom = 1741.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
-text = "Back
-"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6ga38")
 
 [node name="Create_Panel" type="Control" parent="."]
 visible = false
@@ -166,16 +211,22 @@ layout_mode = 3
 anchors_preset = 0
 script = ExtResource("4_xmuki")
 
+[node name="CreateBackground" type="TextureRect" parent="Create_Panel"]
+layout_mode = 0
+offset_right = 1080.0
+offset_bottom = 1920.0
+texture = ExtResource("5_oghwu")
+
 [node name="Username_Taken_Label" type="Label" parent="Create_Panel"]
 visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 418.0
-offset_top = 750.0
-offset_right = 662.0
-offset_bottom = 792.0
+offset_left = 397.0
+offset_top = 399.0
+offset_right = 641.0
+offset_bottom = 441.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/font_color = Color(0, 0, 0, 1)
@@ -189,13 +240,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = 337.5
-offset_top = 800.0
-offset_right = 742.5
-offset_bottom = 877.0
+offset_left = 142.0
+offset_top = 483.0
+offset_right = 926.0
+offset_bottom = 589.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_placeholder_color = Color(0.556953, 0.556953, 0.556953, 1)
 theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxEmpty_iok52")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_udjel")
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_eekh8")
 placeholder_text = "Username"
 
 [node name="Create_Button" type="Button" parent="Create_Panel"]
@@ -205,14 +261,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 455.5
-offset_top = 1000.0
-offset_right = 624.5
-offset_bottom = 1077.0
+offset_left = 250.0
+offset_top = 722.0
+offset_right = 844.0
+offset_bottom = 845.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
-text = "Create"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_lxfki")
 
 [node name="Back" type="Button" parent="Create_Panel"]
 layout_mode = 1
@@ -221,14 +277,21 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 478.0
-offset_top = 1300.0
-offset_right = 602.0
-offset_bottom = 1377.0
+offset_left = 354.0
+offset_top = 1625.0
+offset_right = 727.0
+offset_bottom = 1750.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 50
-text = "Back"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_b4b4g")
+
+[node name="Filter_Detection" parent="." instance=ExtResource("8_d50p5")]
+visible = false
+offset_left = 525.0
+offset_top = 588.0
+offset_right = 525.0
+offset_bottom = 588.0
 
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/New_Save_Button" to="." method="_on_new_save_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/VBoxContainer/Load_Save_Button" to="." method="_on_load_save_button_pressed"]

@@ -20,7 +20,7 @@ func refresh_menu():
 		$Duck_Scroller/Duck_Container.add_child(duck_instance)
 		duck_instance.render_display(duck_ID)
 		duck_instance.duck_selected.connect(_duck_selected)
-		
+
 func _duck_selected(ID):
 	print("Duck loading" + str(ID))
 	$"../Duck_Base".load_duck(ID)

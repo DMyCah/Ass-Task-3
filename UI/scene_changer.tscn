@@ -1,9 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://coxax4yxcvi2g"]
+[gd_scene load_steps=13 format=3 uid="uid://coxax4yxcvi2g"]
 
 [ext_resource type="Script" path="res://UI/scene_changer.gd" id="1_dlejp"]
 [ext_resource type="Texture2D" uid="uid://bahu5ws36knvt" path="res://Assets/Button/Settings.png" id="2_aiwyt"]
 [ext_resource type="Texture2D" uid="uid://twrig720x11s" path="res://Assets/Button/TimerButton.png" id="2_gqxyt"]
-[ext_resource type="Script" path="res://UI/Save_Button.gd" id="3_5x61m"]
 [ext_resource type="Texture2D" uid="uid://dii0ybnksi18p" path="res://Assets/Button/DuckButton.png" id="3_uwbbc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ws1u1"]
@@ -119,16 +118,6 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_cyf18")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xtlpe")
 icon = ExtResource("2_aiwyt")
 
-[node name="Save_Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 73.0
-offset_top = -1724.0
-offset_right = 117.0
-offset_bottom = -1693.0
-text = "Save"
-script = ExtResource("3_5x61m")
-
 [connection signal="pressed" from="HBoxContainer/Timer" to="." method="_on_timer_pressed"]
 [connection signal="pressed" from="HBoxContainer/Ducks" to="." method="_on_ducks_pressed"]
 [connection signal="pressed" from="Settings_Button" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="Save_Button" to="Save_Button" method="_on_pressed"]

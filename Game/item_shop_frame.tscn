@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://b66w61v5o03bx"]
+
+[ext_resource type="Script" path="res://Item_Shop_Frame.gd" id="1_rgrsx"]
+[ext_resource type="Texture2D" uid="uid://b3w8tjy2b8u26" path="res://Assets/Backgrounds/Frame2.png" id="2_qtvew"]
+[ext_resource type="Texture2D" uid="uid://cqaqeum20k7hb" path="res://Assets/ShopItems/Headwear/BeethovenHair.png" id="2_swe8u"]
+
+[node name="Item_Shop_Frame" type="Control"]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 150.0
+offset_bottom = 150.0
+script = ExtResource("1_rgrsx")
+
+[node name="Frame" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 160.0
+offset_bottom = 160.0
+texture = ExtResource("2_qtvew")
+expand_mode = 1
+
+[node name="Item" type="Sprite2D" parent="."]
+position = Vector2(75, 75)
+scale = Vector2(0.107, 0.107)
+texture = ExtResource("2_swe8u")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

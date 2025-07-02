@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Ass. Task 3"
+config/name="Ass.Task3"
 run/main_scene="res://Login/login_scene.tscn"
 config/features=PackedStringArray("4.2", "Mobile")
 config/icon="res://icon.svg"
@@ -38,3 +38,4 @@ version_control/autoload_on_startup=true
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_s3tc_bptc=true

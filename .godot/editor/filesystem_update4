@@ -1,20 +1,19 @@
-res://Timer/timer_scene.tscn
 res://Game/duck_base.tscn
 res://Game/game_wardrobe_scene.tscn
-res://Game/game_collection_scene.tscn
-res://Game/duck_collection_frame.tscn
-res://Game/game_shop_scene.tscn
-res://UI/scene_changer.tscn
-res://UI/scene_changer.gd
-res://Game/accessory_frame.tscn
-res://Timer/TextureRect.gd
-res://Timer/timer_scene.gd
-res://Main Menu/main_menu_ui.tscn
-res://Main Menu/main_menu_scene.tscn
 res://Game/study_goals_panel.tscn
-res://Game/game_menu_bar.tscn
+res://Login/login_scene.tscn
+res://Setting/settings_scene.tscn
+res://Game/game_shop_scene.tscn
 res://Game/Goals/goal.tscn
-res://Game/Goals/Goal.gd
-res://rewards_notification.tscn
-res://rewards_notification.gd
+res://Game/accessory_frame.tscn
+res://Game/duck_base.gd
 res://SaveManager.gd
+res://Filter_Detection.gd
+res://Login/login_scene.gd
+res://filter_detection.tscn
+res://Game/Goals/Create_Goal_panel.gd
+res://Game/Goals/Goal.gd
+res://Game/game_menu_bar.tscn
+res://Game/game_collection_scene.tscn
+res://Timer/timer_scene.tscn
+res://Timer/Timer Settings/time_slots.tscn

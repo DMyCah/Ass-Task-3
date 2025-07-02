@@ -1,4 +1,5 @@
 extends Node
+const ENCRYPTION_KEY = "secretsecretencryptionducksbread"
 var current_save_data = {}
 var default_save_data = {
 		"username": "",
@@ -11,11 +12,15 @@ var default_save_data = {
 		"goals":[
 			
 		],
-		"money":0,
-		"food":0
+		"money":500,
+		"food":2000,
+		"items_owned":[
+			
+		]
 	}
 var saves_dir = DirAccess.open("user://saves")
-var save_file = "DevTestData.save"
+var save_file = ""
+var invalid_characters = ['"',"'", "\"", "\n","[","]","{","}"]
 
 func _ready():
 	DirAccess.open("user://").make_dir_recursive("user://saves")
@@ -28,7 +33,7 @@ func new_save(username):
 
 func save_game():
 	Globals.save_global_data()
-	var file = FileAccess.open("user://saves/"+save_file, FileAccess.WRITE)
+	var file = FileAccess.open_encrypted_with_pass("user://saves/"+save_file, FileAccess.WRITE, ENCRYPTION_KEY)
 	file.store_string(JSON.stringify(current_save_data))
 	file.close()
 	print("New game saved.", current_save_data)
@@ -37,7 +42,7 @@ func save_game():
 
 func reset_data():
 	if FileAccess.file_exists("user://saves/"+save_file):
-		var file = FileAccess.open("user://saves/"+save_file, FileAccess.WRITE)
+		var file = FileAccess.open_encrypted_with_pass("user://saves/"+save_file, FileAccess.WRITE, ENCRYPTION_KEY)
 		file.store_string(JSON.stringify(default_save_data))
 		file.close()
 		var username = current_save_data["username"] 
@@ -52,7 +57,7 @@ func delete_data():
 	DirAccess.remove_absolute("user://saves/"+save_file)
 
 func load_game():
-	var file = FileAccess.open("user://saves/"+save_file, FileAccess.READ)
+	var file = FileAccess.open_encrypted_with_pass("user://saves/"+save_file, FileAccess.READ, ENCRYPTION_KEY)
 	var content = file.get_as_text()
 	file.close()
 	current_save_data = JSON.parse_string(content)
@@ -60,10 +65,11 @@ func load_game():
 	print("Game loaded:", current_save_data)
 
 func login(username):
+	saves_dir = DirAccess.open("user://saves")
 	saves_dir.list_dir_begin()
 	var file = saves_dir.get_next()
 	while file != "":
-		var searching_file = FileAccess.open("user://saves/"+file, FileAccess.READ)
+		var searching_file = FileAccess.open_encrypted_with_pass("user://saves/"+file, FileAccess.READ, ENCRYPTION_KEY)
 		var content = JSON.parse_string(searching_file.get_as_text())
 		searching_file.close()
 		if content["username"] == username:
@@ -80,10 +86,11 @@ func login(username):
 
 func create_user(username):
 	print("creating user")
+	saves_dir = DirAccess.open("user://saves")
 	saves_dir.list_dir_begin()
 	var file = saves_dir.get_next()
 	while file != "":
-		var searching_file = FileAccess.open("user://saves/"+file, FileAccess.READ)
+		var searching_file = FileAccess.open_encrypted_with_pass("user://saves/"+file, FileAccess.READ, ENCRYPTION_KEY)
 		var content = JSON.parse_string(searching_file.get_as_text())
 		searching_file.close()
 		if content["username"] == username:
@@ -103,3 +110,19 @@ func sign_out():
 	print(current_save_data)
 	get_tree().change_scene_to_file("res://Login/login_scene.tscn")
 	print("Signed out")
+
+func filter_input_username(type,input):
+	var input_before = input
+	for i in invalid_characters:
+			input = input.replace(i, " ")
+	if input_before != input:
+		print("Invalid Characters")
+		return false
+	if type == "username":
+		if input.length() < 1 or input.length() > 20:
+			print("Invalid username")
+			return false
+	if type == "other":
+		if input.length() > 100:
+			print("Invalid input")
+			return false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://c4ntu0tk2y6px"]
+[gd_scene load_steps=40 format=3 uid="uid://c4ntu0tk2y6px"]
 
 [ext_resource type="Script" path="res://Timer/timer_scene.gd" id="1_t4axc"]
 [ext_resource type="PackedScene" uid="uid://coxax4yxcvi2g" path="res://UI/scene_changer.tscn" id="2_2npsy"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://cpnid0qnob4p8" path="res://Timer/Timer Settings/time_slots.tscn" id="7_1qcq2"]
 [ext_resource type="Script" path="res://Timer/Break_Setup_Display.gd" id="8_k8a8m"]
 [ext_resource type="Script" path="res://Timer/end_confirm_node.gd" id="8_nn460"]
+[ext_resource type="Texture2D" uid="uid://c50aw2ixftjmo" path="res://Assets/Icons/NormalTimer.png" id="12_7l5ml"]
+[ext_resource type="Texture2D" uid="uid://dwgsj5nh8k1tl" path="res://Assets/Icons/PomodoroTimer.png" id="13_edkvx"]
+[ext_resource type="Texture2D" uid="uid://bqf7mghc5y7tw" path="res://Assets/Backgrounds/EndTimer.png" id="13_nrjq2"]
 
 [sub_resource type="Theme" id="Theme_1yq83"]
 Label/font_sizes/font_size = 100
@@ -30,7 +33,19 @@ font_size = 100
 
 [sub_resource type="Theme" id="Theme_kx6gu"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_bb3gm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7s7s1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0n10n"]
+
 [sub_resource type="ButtonGroup" id="ButtonGroup_7h141"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_guu32"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_pmqso"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_s843l"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m2jvj"]
 
@@ -43,9 +58,17 @@ bg_color = Color(0, 0, 0, 0.227451)
 OptionButton/constants/h_separation = 4
 OptionButton/styles/normal = SubResource("StyleBoxFlat_hvoij")
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_ciwbr"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yl5ru"]
 
-[sub_resource type="Theme" id="Theme_813gp"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lo4bj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jybt6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mwt4y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8hac6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cq1ev"]
 
 [node name="Timer_Scene" type="Node2D"]
 script = ExtResource("1_t4axc")
@@ -500,28 +523,36 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 440.0
+offset_left = 443.0
 offset_top = 50.0
-offset_right = 540.0
+offset_right = 543.0
 offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_kx6gu")
+theme_override_constants/icon_max_width = 100
+theme_override_styles/normal = SubResource("StyleBoxEmpty_bb3gm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_7s7s1")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_0n10n")
 toggle_mode = true
 button_group = SubResource("ButtonGroup_7h141")
-text = "N"
+icon = ExtResource("12_7l5ml")
 
 [node name="Pomodoro_Button" type="Button" parent="."]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 540.0
+offset_left = 536.0
 offset_top = 50.0
-offset_right = 640.0
+offset_right = 636.0
 offset_bottom = 150.0
 grow_vertical = 2
+theme_override_constants/icon_max_width = 100
+theme_override_styles/normal = SubResource("StyleBoxEmpty_guu32")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_pmqso")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_s843l")
 toggle_mode = true
-text = "P"
+icon = ExtResource("13_edkvx")
 
 [node name="Pause_Button" type="Button" parent="."]
 visible = false
@@ -614,31 +645,23 @@ offset_right = 250.0
 offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = SubResource("PlaceholderTexture2D_ciwbr")
-
-[node name="Message_Label" type="RichTextLabel" parent="End_Confirm_Node/Background"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_813gp")
-theme_override_font_sizes/normal_font_size = 40
-bbcode_enabled = true
-text = "[center]Are you sure you want to end the timer?
-(Add more text on rewards)"
+texture = ExtResource("13_nrjq2")
+expand_mode = 1
 
 [node name="Cancel_Button" type="Button" parent="End_Confirm_Node/Background"]
 layout_mode = 1
 anchors_preset = -1
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 40.0
-offset_bottom = -10.0
+offset_left = 74.0
+offset_top = -99.0
+offset_right = 209.0
+offset_bottom = -36.0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 40
-text = "Cancel"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yl5ru")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_lo4bj")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_jybt6")
 
 [node name="Confirm_Button" type="Button" parent="End_Confirm_Node/Background"]
 layout_mode = 1
@@ -647,14 +670,16 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -203.0
-offset_top = -73.0
-offset_right = -40.0
-offset_bottom = -10.0
+offset_left = -221.0
+offset_top = -102.0
+offset_right = -58.0
+offset_bottom = -39.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_font_sizes/font_size = 40
-text = "Confirm"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mwt4y")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_8hac6")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_cq1ev")
 
 [connection signal="timeout" from="Work_Node/Work_Timer" to="." method="_on_work_timer_timeout"]
 [connection signal="timeout" from="Work_Node/Work_Timer" to="Break_Node" method="_on_work_timer_timeout"]

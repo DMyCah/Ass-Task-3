@@ -1,10 +1,21 @@
-[gd_scene load_steps=5 format=3 uid="uid://dh1i54sipwrfa"]
+[gd_scene load_steps=11 format=3 uid="uid://dh1i54sipwrfa"]
 
 [ext_resource type="Script" path="res://Game/Goals/Goal.gd" id="1_oti5e"]
 [ext_resource type="Texture2D" uid="uid://b4w71h4mnqxj4" path="res://Assets/Icons/WormIcon.png" id="2_yola8"]
-[ext_resource type="PackedScene" uid="uid://ck1v1wt2aq572" path="res://rewards_notification.tscn" id="3_wjhpd"]
+[ext_resource type="Texture2D" uid="uid://byer483bjls8g" path="res://Assets/Backgrounds/DeleteGoal.png" id="3_324hd"]
+[ext_resource type="PackedScene" uid="uid://cyi0hrshfraqh" path="res://filter_detection.tscn" id="4_p7d1o"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_nvfwm"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7oq4f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wqjpa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fb7pa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wb6tm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7kh2"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xyeye"]
 
 [node name="Goal" type="Control"]
 custom_minimum_size = Vector2(2.08165e-12, 150)
@@ -73,6 +84,7 @@ offset_left = 524.0
 offset_top = 68.0
 offset_right = 594.0
 offset_bottom = 99.0
+disabled = true
 alignment = 0
 
 [node name="Icon" type="TextureRect" parent="Reward"]
@@ -88,26 +100,21 @@ expand_mode = 1
 visible = false
 layout_mode = 1
 offset_left = 167.0
-offset_top = 11.0
+offset_top = -8.0
 offset_right = 367.0
-offset_bottom = 91.0
-texture = SubResource("PlaceholderTexture2D_nvfwm")
+offset_bottom = 115.0
+texture = ExtResource("3_324hd")
+expand_mode = 1
 
 [node name="Cancel" type="Button" parent="Confirm_Delete"]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 41.0
-offset_right = 78.0
-offset_bottom = 72.0
-text = "Cancel"
-
-[node name="Label" type="Label" parent="Confirm_Delete"]
-layout_mode = 0
-offset_left = 48.0
-offset_top = 5.0
-offset_right = 145.0
-offset_bottom = 28.0
-text = "Delete Goal?"
+offset_left = 17.0
+offset_top = 61.0
+offset_right = 77.0
+offset_bottom = 84.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7oq4f")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wqjpa")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_fb7pa")
 
 [node name="Confirm" type="Button" parent="Confirm_Delete"]
 layout_mode = 1
@@ -116,21 +123,22 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -87.0
-offset_top = -39.0
-offset_right = -16.0
-offset_bottom = -8.0
+offset_left = -85.0
+offset_top = -62.0
+offset_right = -14.0
+offset_bottom = -36.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Confirm"
+theme_override_styles/normal = SubResource("StyleBoxEmpty_wb6tm")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_c7kh2")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_xyeye")
 
-[node name="Rewards_Notification" parent="." instance=ExtResource("3_wjhpd")]
+[node name="Filter_Detection" parent="." instance=ExtResource("4_p7d1o")]
 visible = false
-layout_mode = 1
-offset_left = 110.0
-offset_top = 156.0
-offset_right = 110.0
-offset_bottom = 156.0
+offset_left = 283.0
+offset_top = -96.0
+offset_right = 283.0
+offset_bottom = -96.0
 
 [connection signal="text_changed" from="Component_Container/Goal_TextEdit" to="." method="_on_goal_text_edit_text_changed"]
 [connection signal="pressed" from="Save_Goal_Button" to="." method="_on_save_goal_button_pressed"]
