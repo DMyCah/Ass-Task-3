@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://p5dqhc163c48"]
+[gd_scene load_steps=29 format=3 uid="uid://p5dqhc163c48"]
 
 [ext_resource type="Texture2D" uid="uid://kv4cekcak8x0" path="res://Assets/Backgrounds/Store.png" id="1_8aon4"]
 [ext_resource type="PackedScene" uid="uid://cmc7bjuwnapv" path="res://Game/game_menu_bar.tscn" id="1_73mle"]
@@ -12,18 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://yn2y5hp4hy1y" path="res://Assets/Icons/WoodDuck.png" id="7_84hhq"]
 [ext_resource type="Texture2D" uid="uid://k14c8jb3erqj" path="res://Assets/Button/PurchaseButton.png" id="7_lnntf"]
 [ext_resource type="Texture2D" uid="uid://0b8fmf3tv2hf" path="res://Assets/Icons/Duck.png" id="8_7d76y"]
-[ext_resource type="Script" path="res://Game/Headwear.gd" id="8_pu4c0"]
 [ext_resource type="Texture2D" uid="uid://cdbatal7d62f7" path="res://Assets/Icons/Head.png" id="8_wyje1"]
-[ext_resource type="Script" path="res://Game/Eyewear.gd" id="9_5cepq"]
 [ext_resource type="Texture2D" uid="uid://b1i33pn3pdmum" path="res://Assets/Icons/Face.png" id="9_c7ajb"]
-[ext_resource type="Script" path="res://Game/Neckwear.gd" id="10_d8yn2"]
 [ext_resource type="Texture2D" uid="uid://cnugx4w5qy008" path="res://Assets/Icons/Neck.png" id="10_x0t2w"]
-[ext_resource type="Script" path="res://Game/FullBodyWear.gd" id="11_63hhj"]
 [ext_resource type="Texture2D" uid="uid://xp6tx1birwc7" path="res://Assets/Icons/Fullbody.png" id="11_fenkp"]
-[ext_resource type="Script" path="res://Game/Wingwear.gd" id="12_4o5lk"]
 [ext_resource type="Texture2D" uid="uid://dt4deos20bxe6" path="res://Assets/Icons/Wing.png" id="12_oioox"]
 [ext_resource type="Texture2D" uid="uid://0y1rk4txsrhn" path="res://Assets/Icons/Feet.png" id="13_nv26c"]
-[ext_resource type="Script" path="res://Game/Footwear.gd" id="13_rtj56"]
 [ext_resource type="Texture2D" uid="uid://dv03ubfyiskn8" path="res://Assets/Icons/Clear.png" id="14_5il8n"]
 [ext_resource type="Texture2D" uid="uid://d3y7ta05yd5xg" path="res://Assets/Icons/DuckBox.png" id="14_vufin"]
 [ext_resource type="Texture2D" uid="uid://b4w71h4mnqxj4" path="res://Assets/Icons/WormIcon.png" id="15_hrekc"]
@@ -205,27 +199,21 @@ texture = ExtResource("7_84hhq")
 
 [node name="Headwear" type="Sprite2D" parent="Duck_Display"]
 scale = Vector2(0.143, 0.143)
-script = ExtResource("8_pu4c0")
 
 [node name="Eyewear" type="Sprite2D" parent="Duck_Display"]
 scale = Vector2(0.143, 0.143)
-script = ExtResource("9_5cepq")
 
 [node name="Neckwear" type="Sprite2D" parent="Duck_Display"]
 scale = Vector2(0.143, 0.143)
-script = ExtResource("10_d8yn2")
 
 [node name="FullBodywear" type="Sprite2D" parent="Duck_Display"]
 scale = Vector2(0.143, 0.143)
-script = ExtResource("11_63hhj")
 
 [node name="Wingwear" type="Sprite2D" parent="Duck_Display"]
 scale = Vector2(0.143, 0.143)
-script = ExtResource("12_4o5lk")
 
 [node name="Footwear" type="Sprite2D" parent="Duck_Display"]
 scale = Vector2(0.143, 0.143)
-script = ExtResource("13_rtj56")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Duck_Display"]
 
@@ -238,13 +226,6 @@ offset_right = 758.0
 offset_bottom = 1875.0
 texture = ExtResource("14_vufin")
 expand_mode = 1
-
-[node name="Congrats_message" type="TextureRect" parent="."]
-layout_mode = 0
-offset_left = 805.0
-offset_top = 856.0
-offset_right = 845.0
-offset_bottom = 896.0
 
 [node name="Total_Money" type="TextureRect" parent="."]
 layout_mode = 0

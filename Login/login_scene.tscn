@@ -1,19 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://dvupwbyodn3qy"]
+[gd_scene load_steps=18 format=3 uid="uid://dvupwbyodn3qy"]
 
 [ext_resource type="Script" path="res://Login/login_scene.gd" id="1_ej1uq"]
-[ext_resource type="Script" path="res://Login/Opening_Panel.gd" id="2_3jspj"]
 [ext_resource type="Texture2D" uid="uid://bjlv1qsdpldxk" path="res://Assets/Backgrounds/opening.png" id="3_ckqkp"]
-[ext_resource type="Script" path="res://Login/Login_Panel.gd" id="3_wite3"]
-[ext_resource type="Script" path="res://Login/Create_Panel.gd" id="4_xmuki"]
 [ext_resource type="Texture2D" uid="uid://b4e11plxg1j54" path="res://Assets/Backgrounds/Login.png" id="5_iabma"]
 [ext_resource type="Texture2D" uid="uid://pg5ids8i8nwk" path="res://Assets/Backgrounds/Create.png" id="5_oghwu"]
 [ext_resource type="PackedScene" uid="uid://cyi0hrshfraqh" path="res://filter_detection.tscn" id="8_d50p5"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fe21t"]
-bg_color = Color(1, 1, 1, 1)
-
-[sub_resource type="Theme" id="Theme_q8bqn"]
-Panel/styles/panel = SubResource("StyleBoxFlat_fe21t")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t1olp"]
 
@@ -41,14 +32,6 @@ Panel/styles/panel = SubResource("StyleBoxFlat_fe21t")
 
 [node name="Login_Scene" type="Node2D"]
 script = ExtResource("1_ej1uq")
-
-[node name="Panel" type="Panel" parent="."]
-visible = false
-offset_right = 1080.0
-offset_bottom = 1920.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = SubResource("Theme_q8bqn")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -84,7 +67,6 @@ text = "!!!Clear Data!!!"
 visible = false
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("2_3jspj")
 
 [node name="OpeningBackground" type="TextureRect" parent="Opening_Panel"]
 layout_mode = 0
@@ -128,7 +110,6 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_16e3m")
 visible = false
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("3_wite3")
 
 [node name="LoginBackground" type="TextureRect" parent="Login_Panel"]
 layout_mode = 0
@@ -209,7 +190,6 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_6ga38")
 visible = false
 layout_mode = 3
 anchors_preset = 0
-script = ExtResource("4_xmuki")
 
 [node name="CreateBackground" type="TextureRect" parent="Create_Panel"]
 layout_mode = 0

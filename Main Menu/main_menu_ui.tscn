@@ -40,18 +40,6 @@ grow_vertical = 2
 layout_mode = 2
 theme = SubResource("Theme_o4p5i")
 
-[node name="Memo_Button" type="Button" parent="Buttons_Centering_Container/Buttons_Container"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-text = "Memo"
-
-[node name="Calender_Button" type="Button" parent="Buttons_Centering_Container/Buttons_Container"]
-visible = false
-layout_mode = 2
-size_flags_vertical = 3
-text = "Calender"
-
 [node name="Timer_Button" type="Button" parent="Buttons_Centering_Container/Buttons_Container"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -86,9 +74,6 @@ theme_override_styles/hover = SubResource("StyleBoxEmpty_wb5fw")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_ncumm")
 icon = ExtResource("2_sy23k")
 
-[connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Memo_Button" to="." method="_on_memo_button_pressed"]
-[connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Memo_Button" to="." method="_on_button_pressed"]
-[connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Calender_Button" to="." method="_on_calender_button_pressed"]
 [connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Timer_Button" to="." method="_on_timer_button_pressed"]
 [connection signal="pressed" from="Buttons_Centering_Container/Buttons_Container/Game_Button" to="." method="_on_game_button_pressed"]
 [connection signal="pressed" from="CenterContainer/Settings_Button" to="." method="_on_settings_button_pressed"]

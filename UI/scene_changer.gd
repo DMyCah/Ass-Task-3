@@ -1,28 +1,17 @@
 extends Control
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+#Bottom navigation
 
 func _on_timer_pressed():
-	#doesnt work?
-	$HBoxContainer/Timer/Timer_Shade.visible = true
-	$HBoxContainer/Ducks/Ducks_Shade.visible = false
-	
+	#Change scene to timer and save
 	get_tree().change_scene_to_file("res://Timer/timer_scene.tscn")
 	Globals.current_scene = "timer"
 	$Settings_Button.visible = true
 	SaveManager.save_game()
 
+#Change scene to duck
 func _on_ducks_pressed():
-	#doesnt work?
-	$HBoxContainer/Ducks/Ducks_Shade.visible = true
-	$HBoxContainer/Timer/Timer_Shade.visible = false
-	
+	#Load the last scene that was opened by the user and save
 	if Globals.game_last_scene == "collection":
 		get_tree().change_scene_to_file("res://Game/game_collection_scene.tscn")
 		Globals.current_scene = "game_collection"
@@ -38,7 +27,7 @@ func _on_ducks_pressed():
 	$Settings_Button.visible = true
 	SaveManager.save_game()
 
-
+#Change scene to settings
 func _on_settings_button_pressed():
 	get_tree().change_scene_to_file("res://Setting/settings_scene.tscn")
 	Globals.current_scene = "settings"

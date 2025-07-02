@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
+#References list of ducks in save data
 var duck_dictionary = SaveManager.current_save_data["ducks"]
 
-
+#instances all variables
 var ID
 var Body
 var Headwear
@@ -15,9 +16,6 @@ var Name
 var Experience
 var Level
 
-func _ready():
-	pass
-	
 
 #Changes the texture on each individual part based on the path for the png given and which part to change
 func change_accessory(type, new_accessory_path):
@@ -67,14 +65,16 @@ func change_accessory(type, new_accessory_path):
 
 func load_duck(Loading_ID):
 	ID = Loading_ID
+	#Takes the ID of the duck and sets loading to the duck object found with the index
 	var loading = duck_dictionary[find_duck_Index_with_ID(Loading_ID)]
 	if loading["Body"]:
 		Body = loading["Body"]
 		$Body.texture = load(Body)
 	else:
 		print("Error loading body for duck: " + ID)
-
+	#If the loading duck has a value, then render the accessory
 	if loading["Headwear"]:
+		#Sets headwear to the path of the accessories image
 		Headwear = loading["Headwear"]
 		$Headwear.texture = load(Headwear)
 	else:
@@ -120,9 +120,7 @@ func load_duck(Loading_ID):
 
 
 
-#Saving a ducks data
-
-
+#Returns ducks data in dictionary format
 func get_duck_data():
 	return {
 		"ID": ID,
@@ -139,7 +137,8 @@ func get_duck_data():
 	}
 
 
-
+#Create a NEW duck save, setting ID if there is already ducks made, if not ID defaulted to 1
+#As any duck created will be created  with "set_data()" at ready() and then checked here
 func create_duck_save():
 	generate_duck()
 	if duck_dictionary.size() > 0:
@@ -150,6 +149,7 @@ func create_duck_save():
 	else:
 		duck_dictionary.append(get_duck_data())
 
+#Generates a random body for the duck
 func generate_duck():
 	var directory = DirAccess.open("res://Assets/Bodies")
 	var files = []
@@ -163,31 +163,22 @@ func generate_duck():
 	Body = "res://Assets/Bodies/" + files[randi_range(0,files.size()-1)]
 
 
-
+#Finds index of duck with matching ID in the list and sets that ducks values to the current ducks values
 func update_save():
 	print(ID)
 	for i in range(duck_dictionary.size()):
 		if duck_dictionary[i]["ID"] == ID:
 			duck_dictionary[i] = get_duck_data()
 
+#Takes the ID of the duck and returns the matching index in the list of ducks
 func find_duck_Index_with_ID(ID):
 	for i in range(duck_dictionary.size()):
 		if duck_dictionary[i]["ID"] == ID:
 			return i
 
-func change_name(new_name):
-	Name = new_name
-	update_save()
-
-
+#Sets defualt data of duck
 func set_data():
 	ID = 1
 	Name = "MyFirstDuck"
 	Experience = 0.0
 	Level = 1
-
-
-
-func _duck_selected_wardrobe(ID):
-	load_duck(ID)
-

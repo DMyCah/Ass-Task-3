@@ -1,17 +1,7 @@
 extends LineEdit
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
-
+#Sets its text to be in the format of "00", maximum of 2, filled in by 0 if empty space
 func _on_text_submitted(new_text):
 	if int(new_text) >= 60:
 		new_text = int(new_text) - 60

@@ -1,11 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://jeduc0pf5pay"]
+[gd_scene load_steps=3 format=3 uid="uid://jeduc0pf5pay"]
 
 [ext_resource type="PackedScene" uid="uid://drgi0ijit7jh6" path="res://Main Menu/main_menu_ui.tscn" id="1_8xdh2"]
-[ext_resource type="Script" path="res://Main Menu/main_menu_scene.gd" id="1_am47n"]
 [ext_resource type="Texture2D" uid="uid://dksbompqr20l0" path="res://Assets/Backgrounds/background.png" id="2_82oc8"]
 
 [node name="Main_Menu_Scene" type="Node2D"]
-script = ExtResource("1_am47n")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 40.0

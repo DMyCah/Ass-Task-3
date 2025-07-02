@@ -1,15 +1,6 @@
 extends Control
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
+#Display rewards earned in the bottom left corner
 func display_rewards_earned(currency, food):
 	self.visible = true
 	$Currency.text = "+ " + str(currency)

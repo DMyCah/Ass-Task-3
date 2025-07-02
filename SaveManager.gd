@@ -18,19 +18,23 @@ var default_save_data = {
 			
 		]
 	}
+#Directory of save filess
 var saves_dir = DirAccess.open("user://saves")
 var save_file = ""
 var invalid_characters = ['"',"'", "\"", "\n","[","]","{","}"]
 
 func _ready():
+	#Creates save directory if needed
 	DirAccess.open("user://").make_dir_recursive("user://saves")
 
+#Updates current save data to be the defualt and saves a new file with this data named "username".save
 func new_save(username):
 	current_save_data = default_save_data
 	current_save_data["username"] = username
 	save_file = username + ".save"
 	save_game()
 
+#Save global variables then write with encryption to the save file of the current save dataa
 func save_game():
 	Globals.save_global_data()
 	var file = FileAccess.open_encrypted_with_pass("user://saves/"+save_file, FileAccess.WRITE, ENCRYPTION_KEY)
@@ -39,7 +43,7 @@ func save_game():
 	print("New game saved.", current_save_data)
 
 
-
+#Finds the current users save file and writes over their data setting it to the default save data
 func reset_data():
 	if FileAccess.file_exists("user://saves/"+save_file):
 		var file = FileAccess.open_encrypted_with_pass("user://saves/"+save_file, FileAccess.WRITE, ENCRYPTION_KEY)
@@ -53,9 +57,11 @@ func reset_data():
 	else:
 		print("No save found.")
 
+#ABSOLUTELY Deletes their save file
 func delete_data():
 	DirAccess.remove_absolute("user://saves/"+save_file)
 
+#Searches for users save files, reads and decrypts and sets the current save data to be their save data that was read
 func load_game():
 	var file = FileAccess.open_encrypted_with_pass("user://saves/"+save_file, FileAccess.READ, ENCRYPTION_KEY)
 	var content = file.get_as_text()
@@ -64,6 +70,7 @@ func load_game():
 	Globals.load_save_data()
 	print("Game loaded:", current_save_data)
 
+#Searches for save files with matching usernames and returns true if login successful, setting the save file to the file found
 func login(username):
 	saves_dir = DirAccess.open("user://saves")
 	saves_dir.list_dir_begin()
@@ -74,18 +81,15 @@ func login(username):
 		searching_file.close()
 		if content["username"] == username:
 			save_file = file
-			print("Found user:", username,"{", save_file, "}")
 			return true
 			break
 		file = saves_dir.get_next()
 	saves_dir.list_dir_end()
 	#No user found
-	print("No user found")
 	return false
 
-
+#Searches to check if a save file with the same username given is found. If noot creates a new save with username inputted
 func create_user(username):
-	print("creating user")
 	saves_dir = DirAccess.open("user://saves")
 	saves_dir.list_dir_begin()
 	var file = saves_dir.get_next()
@@ -103,6 +107,7 @@ func create_user(username):
 	new_save(username)
 	return true
 
+#Saves game and user data THEN resets data to be fresh and returns to login screen
 func sign_out():
 	save_game()
 	current_save_data = default_save_data
@@ -111,13 +116,17 @@ func sign_out():
 	get_tree().change_scene_to_file("res://Login/login_scene.tscn")
 	print("Signed out")
 
+#Santisies data
+#Return false means bad input
 func filter_input_username(type,input):
+	#Use seperate variables to check if any replacements were made and determine if return false
 	var input_before = input
 	for i in invalid_characters:
 			input = input.replace(i, " ")
 	if input_before != input:
 		print("Invalid Characters")
 		return false
+	#Filters for specific type of input
 	if type == "username":
 		if input.length() < 1 or input.length() > 20:
 			print("Invalid username")

@@ -120,7 +120,6 @@ offset_right = -239.0
 offset_bottom = 1241.0
 
 [node name="Create_Goal_panel" type="Control" parent="."]
-visible = false
 layout_mode = 2
 anchors_preset = 0
 offset_left = 25.0
@@ -130,9 +129,12 @@ offset_bottom = 400.0
 script = ExtResource("2_ngm25")
 
 [node name="TextureRect2" type="TextureRect" parent="Create_Goal_panel"]
-layout_mode = 0
-offset_right = 550.0
-offset_bottom = 300.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("5_f61kk")
 expand_mode = 1
 

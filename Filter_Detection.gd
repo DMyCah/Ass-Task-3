@@ -1,15 +1,7 @@
 extends Control
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
+#Function to display when a sanitisation is triggered
 func detection(type):
 	self.visible = true
 	$Panel/Line1.text = "INVALID: " + type + " MADE."

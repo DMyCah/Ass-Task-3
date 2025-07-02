@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b66w61v5o03bx"]
 
-[ext_resource type="Script" path="res://Item_Shop_Frame.gd" id="1_rgrsx"]
+[ext_resource type="Script" path="res://Game/Item_Shop_Frame.gd" id="1_o31ei"]
 [ext_resource type="Texture2D" uid="uid://b3w8tjy2b8u26" path="res://Assets/Backgrounds/Frame2.png" id="2_qtvew"]
 [ext_resource type="Texture2D" uid="uid://cqaqeum20k7hb" path="res://Assets/ShopItems/Headwear/BeethovenHair.png" id="2_swe8u"]
 
@@ -10,7 +10,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 150.0
 offset_bottom = 150.0
-script = ExtResource("1_rgrsx")
+script = ExtResource("1_o31ei")
 
 [node name="Frame" type="TextureRect" parent="."]
 layout_mode = 0

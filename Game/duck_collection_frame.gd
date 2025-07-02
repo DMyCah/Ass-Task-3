@@ -4,21 +4,13 @@ var Duck_ID
 signal duck_selected
 @onready var show = $Info_display.visible
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
+#Sets the duck that is displayed in it to load the accessories of the ID it is given
 func render_display(ID):
 	Duck_ID = ID
 	$Duck_Base.load_duck(ID)
 
 
-
+#Shows the plate above to change to wardrobe
 func display_duck_info():
 	if show == false:
 		$Info_display.visible = true
@@ -27,7 +19,9 @@ func display_duck_info():
 		$Info_display.visible = false
 		show = false
 
+#Changes scene to the wardrobe with the duck that is displayed loaded
 func _on_wardrobe_button_pressed():
+	#Tells the wardrobe which duck to load
 	emit_signal("duck_selected_collection", Duck_ID)
 	get_tree().change_scene_to_file("res://Game/game_wardrobe_scene.tscn")
 	Globals.displaying_duck_ID = Duck_ID
@@ -35,7 +29,7 @@ func _on_wardrobe_button_pressed():
 	Globals.current_scene = "game_wardrobe"
 
 
-
+#Toggles duck info on click
 func _on_gui_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		display_duck_info()
