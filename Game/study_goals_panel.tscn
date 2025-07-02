@@ -120,6 +120,7 @@ offset_right = -239.0
 offset_bottom = 1241.0
 
 [node name="Create_Goal_panel" type="Control" parent="."]
+visible = false
 layout_mode = 2
 anchors_preset = 0
 offset_left = 25.0
