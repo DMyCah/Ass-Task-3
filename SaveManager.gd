@@ -30,7 +30,8 @@ func _ready():
 
 #Updates current save data to be the defualt and saves a new file with this data named "username".save
 func new_save(username):
-	current_save_data = default_save_data
+	current_save_data = default_save_data.duplicate(true)
+	print(current_save_data)
 	current_save_data["username"] = username
 	save_file = username + ".save"
 	save_game()
@@ -41,7 +42,7 @@ func save_game():
 	var file = FileAccess.open_encrypted_with_pass("user://saves/"+save_file, FileAccess.WRITE, ENCRYPTION_KEY)
 	file.store_string(JSON.stringify(current_save_data))
 	file.close()
-	print("New game saved.", current_save_data)
+	print("\nNew game saved.", current_save_data)
 
 
 #Finds the current users save file and writes over their data setting it to the default save data
@@ -49,9 +50,13 @@ func reset_data():
 	if FileAccess.file_exists("user://saves/"+save_file):
 		var file = FileAccess.open_encrypted_with_pass("user://saves/"+save_file, FileAccess.WRITE, ENCRYPTION_KEY)
 		file.store_string(JSON.stringify(default_save_data))
+		print("\n\nDEFAULT USER SAVE DATA" + str(default_save_data))
 		file.close()
 		var username = current_save_data["username"] 
-		current_save_data = default_save_data
+		print("\n" + username)
+		current_save_data = default_save_data.duplicate(true)
+		print("\n\nDEFAULT USER SAVE DATA" + str(default_save_data))
+		print("\n\nCURRENT USER SAVE DATA" + str(current_save_data))
 		current_save_data["username"] = username
 		print("Data Reset")
 		print(current_save_data)
@@ -111,7 +116,7 @@ func create_user(username):
 #Saves game and user data THEN resets data to be fresh and returns to login screen
 func sign_out():
 	save_game()
-	current_save_data = default_save_data
+	current_save_data = default_save_data.duplicate(true)
 	print("\n\nRESET DATA")
 	print(current_save_data)
 	get_tree().change_scene_to_file("res://Login/login_scene.tscn")
