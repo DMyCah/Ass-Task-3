@@ -38,6 +38,8 @@ offset_right = 300.0
 offset_bottom = 240.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+pivot_offset = Vector2(300, 400)
 size_flags_horizontal = 4
 script = ExtResource("1_o5kcf")
 
@@ -74,7 +76,7 @@ expand_mode = 1
 
 [node name="TextureRect2" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 253.0
+offset_left = 241.0
 offset_top = 766.0
 offset_right = 343.0
 offset_bottom = 807.0
@@ -88,9 +90,10 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -36.0
-offset_top = -40.0
-offset_right = 37.0
+offset_left = -43.6667
+offset_top = -40.3333
+offset_right = 44.3333
+offset_bottom = -0.333252
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_crmfs")
@@ -107,6 +110,7 @@ offset_bottom = 750.0
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_constants/separation = 20
 
 [node name="Rewards_Notification" parent="." instance=ExtResource("3_iiscx")]
 visible = false
@@ -114,10 +118,10 @@ layout_mode = 2
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = -239.0
-offset_top = 1241.0
-offset_right = -239.0
-offset_bottom = 1241.0
+offset_left = -136.667
+offset_top = 1075.83
+offset_right = -136.667
+offset_bottom = 1075.83
 
 [node name="Create_Goal_panel" type="Control" parent="."]
 visible = false

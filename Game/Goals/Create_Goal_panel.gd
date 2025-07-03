@@ -43,4 +43,5 @@ func _on_submit_pressed():
 		goal_instance.create_goal(goal, target)
 		get_parent().get_node("ScrollContainer/Goal_Container").add_child(goal_instance)
 		goals.append(goal_instance)
+		get_parent().instantiate_goals()
 

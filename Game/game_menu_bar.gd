@@ -35,3 +35,4 @@ func _on_shop_button_pressed():
 
 func _on_study_goals_button_pressed():
 	$Study_Goals_Panel.visible = true
+	$Study_Goals_Panel.instantiate_goals()

@@ -4,7 +4,12 @@ var goal_resource = preload("res://Game/Goals/goal.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#Instantiates all goals in goal library
+	instantiate_goals()
+
+#Instantiates all goals in goal library
+func instantiate_goals():
+	for child in $ScrollContainer/Goal_Container.get_children():
+		child.queue_free()
 	for i in range(goals_library.size()):
 		var goal_ID = goals_library[i]["ID"]
 		var goal_instance = goal_resource.instantiate()
@@ -36,4 +41,6 @@ func reward_notification(Money):
 #If outside of goal board is clicked it hides
 func _on_background_shader_gui_input(event):
 	if event is InputEventMouseButton:
+		for child in $ScrollContainer/Goal_Container.get_children():
+			child.save_goal()
 		self.visible = false

@@ -2,6 +2,10 @@
 .gd files are those with the code in them.
 If you are willing to and want to more easily view everything you can open this "Ass-Task-3" folder in godot.
 
+---------------------------------------------------------------------------------------
+---------------------------------------------------------------------------------------
+The aim of the project is to create an app to encourage studying. Allows for goals to be set for studying by allocating a target study time for each goal. Incentivise to study by reward given when the amount of time is reached through the usage of a study timer. Reward of bread and worm currency to be used to purchase ducks for their duck collection and accessories to customise their ducks.
+
 Timer:
 crossed tomato = normal timer
 tomato = Pomadoro timer
@@ -29,7 +33,7 @@ Worms are what you spend on accessories
 Bread on new ducks
 
 Wardrobe:
-Recieve first duck when opening wardrobe (coathanger icon)
+Receive first duck when opening wardrobe (coathanger icon)
 
 Need to press save to save your duck when changing in wardrobe
 

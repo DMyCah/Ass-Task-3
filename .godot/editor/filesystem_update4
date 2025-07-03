@@ -1,8 +1,5 @@
 res://Game/duck_base.tscn
-res://Game/Goals/Goal.gd
 res://Timer/timer_scene.tscn
-res://Timer/timer_scene.gd
-res://UI/scene_changer.gd
-res://Game/Goals/Create_Goal_panel.gd
-res://Game/game_shop_scene.gd
-res://rewards_notification.gd
+res://Game/game_shop_scene.tscn
+res://Game/study_goals_panel.tscn
+res://Game/Goals/goal.tscn

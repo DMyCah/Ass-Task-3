@@ -4,6 +4,7 @@ var shop_items = Globals.item_shop
 var item_display_resource = preload("res://Game/item_shop_frame.tscn")
 var displaying_item_index
 var duck_crate = false
+var displaying_item_name
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -62,7 +63,16 @@ func refresh_shop(category):
 		
 	#Clear duck accessory display
 	if displaying_item_index:
-		$Duck_Display.change_accessory(Globals.item_shop[displaying_item_index]["category"], "clear")
+		#Specifically find index here using the name rather than using displaying_item_index as the length of 
+		#the array changes without displaying_item_index being updated
+		for i in SaveManager.current_save_data["items_owned"].size():
+			if SaveManager.current_save_data["items_owned"][i]["item_name"] == displaying_item_name:
+				$Duck_Display.change_accessory(SaveManager.current_save_data["items_owned"][i]["category"], "clear")
+				break
+		for i in Globals.item_shop.size():
+			if Globals.item_shop[i]["item_name"] == displaying_item_name:
+				$Duck_Display.change_accessory(Globals.item_shop[i]["category"], "clear")
+				break
 		$Payment_Panel.visible = false
 	
 	for i in range(Globals.item_shop.size()):
@@ -133,6 +143,7 @@ func display_item(texture_path, item_cost, item_name, item_category):
 	for i in Globals.item_shop.size():
 		if Globals.item_shop[i]["item_name"] == item_name:
 			displaying_item_index = i
+			displaying_item_name = item_name
 			break
 
 

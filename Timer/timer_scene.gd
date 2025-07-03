@@ -101,14 +101,17 @@ func _on_start_button_pressed():
 	$Top_Layer/Background.texture = load("res://Assets/Backgrounds/PondWorm.png")
 	timer_running()
 
+
 #Calculates the time elapsed and adds to the total completion time of the mission
 func add_time_complete(time_elapsed):
 	var adding = time_elapsed - previous_time_elapsed
 	previous_time_elapsed = time_elapsed
 	total_time = adding + total_time
 	if mission_selected != null:
+		print("Updated completion time")
 		mission_selected["Complete"] = (int(mission_selected["Complete"]) + adding)
 		SaveManager.save_game()
+
 
 #Stops timer currently running
 func _on_pause_button_pressed():
@@ -228,6 +231,7 @@ func _on_missions_option_item_selected(index):
 func check_mission_complete():
 	if mission_selected["Complete"] >= mission_selected["Target"]:
 			print("Mission Complete!")
+
 
 #Calculates the rewards based on time elapsed and adds to total
 func calculate_rewards(time):

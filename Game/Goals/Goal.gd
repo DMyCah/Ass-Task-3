@@ -96,15 +96,18 @@ func load_goal(ID):
 			progress_update()
 			reward_unlock()
 
+
 #Calculates the values for target and complete times and displays them in "hours and minutes"
 func set_text_display(index):
 	var target_seconds = (goals_library[index]["Target"])
 	#Converts from seconds to hours and minutes
+	#Hours rounded to nearest 
 	var target_hour = float(target_seconds)/3600
-	target_hour = ceil(target_hour/0.5)*0.5
-	var target_minute = (int(target_seconds) % 3600)/60
-	target_minute = ceil(target_minute/5)*5
-	if (target_hour) > 1:
+	target_hour = floor(target_hour)
+	var target_minute = float(int(target_seconds) % 3600)/60
+	target_minute = round(target_minute)
+	
+	if (target_hour) >= 1:
 		if target_minute == 0:
 			$Component_Container/Target_Hours.text = "Target: " + str(target_hour) + " hours"
 		else:
@@ -116,11 +119,11 @@ func set_text_display(index):
 
 	var complete_seconds = (goals_library[index]["Complete"])
 	#Converts from seconds to hours and minutes
-	var complete_hour = int(complete_seconds)/3600
-	complete_hour = ceil(complete_hour/0.5)*0.5
-	var complete_minute = int(complete_seconds) % 3600/60
-	complete_minute = ceil(complete_minute/5)*5
-	if float(complete_hour) > 1:
+	var complete_hour = float(complete_seconds)/3600
+	complete_hour = floor(complete_hour)
+	var complete_minute = float(int(complete_seconds) % 3600)/60
+	complete_minute = round(complete_minute)
+	if float(complete_hour) >= 1:
 		if complete_minute != 0:
 			$Component_Container/Complete_Hours.text = "Complete: " + str(complete_hour) + " hours"
 		else:
@@ -146,19 +149,19 @@ func update_text_edit_size():
 	var line_count = Goal_TextEdit.get_line_count()
 	var line_height = Goal_TextEdit.get_line_height()
 	var desired_height = line_count * line_height + 4
-	Goal_TextEdit.custom_minimum_size.y = min(desired_height, 90)
-
+	Goal_TextEdit.custom_minimum_size.y = min(desired_height, 70)
 
 #Update display and sanitise input
 func _on_goal_text_edit_text_changed():
-	update_text_edit_size()
 	var sanitise = SaveManager.filter_input_username("other",Goal_TextEdit.get_text())
+	print(Goal_TextEdit.get_text())
 	if sanitise == false:
 		Goal_TextEdit.text = goal_goal
 		$Filter_Detection.detection("INPUT")
 	else:
 		#Set goal data to match the changed text
 		goal_goal = Goal_TextEdit.text
+		update_text_edit_size()
 
 
 #Finds the goal in the data library and removes it, then saves
@@ -177,8 +180,8 @@ func _on_cancel_pressed():
 #Confirm Delete Goal
 func _on_confirm_pressed():
 	#Remove its instance from container
-	queue_free()
 	$Confirm_Delete.visible = false
+	queue_free()
 
 #Provids dictionary save data formating of goal data
 func get_goal_data():

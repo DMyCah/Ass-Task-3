@@ -21,7 +21,8 @@ var default_save_data = {
 #Directory of save filess
 var saves_dir = DirAccess.open("user://saves")
 var save_file = ""
-var invalid_characters = ['"',"'", "\"", "\n","[","]","{","}"]
+var invalid_characters_username = ['"',"'", "\"","\n","[","]","{","}"]
+var invalid_characters_other = ['"',"'", "\"","[","]","{","}"]
 
 func _ready():
 	#Creates save directory if needed
@@ -119,19 +120,26 @@ func sign_out():
 #Santisies data
 #Return false means bad input
 func filter_input_username(type,input):
-	#Use seperate variables to check if any replacements were made and determine if return false
-	var input_before = input
-	for i in invalid_characters:
-			input = input.replace(i, " ")
-	if input_before != input:
-		print("Invalid Characters")
-		return false
 	#Filters for specific type of input
 	if type == "username":
+		#Use seperate variables to check if any replacements were made and determine if return false
+		var input_before = input
+		for i in invalid_characters_username:
+			input = input.replace(i, " ")
+			if input_before != input:
+				print("Invalid Characters")
+				return false
 		if input.length() < 1 or input.length() > 20:
 			print("Invalid username")
 			return false
 	if type == "other":
+		#Use seperate variables to check if any replacements were made and determine if return false
+		var input_before = input
+		for i in invalid_characters_other:
+			input = input.replace(i, " ")
+			if input_before != input:
+				print("Invalid Characters")
+				return false
 		if input.length() > 100:
 			print("Invalid input")
 			return false
