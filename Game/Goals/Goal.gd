@@ -164,14 +164,10 @@ func _on_goal_text_edit_text_changed():
 		update_text_edit_size()
 
 
-#Finds the goal in the data library and removes it, then saves
+#Shows delete goal panel
 func _on_delete_goal_button_pressed():
 	$Confirm_Delete.visible = true
-	for i in range(goals_library.size()):
-		if goal_ID == goals_library[i]["ID"]:
-			goals_library.remove_at(i)
-			SaveManager.save_game()
-			break
+	
 
 #Cancel deleting goal
 func _on_cancel_pressed():
@@ -180,6 +176,11 @@ func _on_cancel_pressed():
 #Confirm Delete Goal
 func _on_confirm_pressed():
 	#Remove its instance from container
+	for i in range(goals_library.size()):
+		if goal_ID == goals_library[i]["ID"]:
+			goals_library.remove_at(i)
+			SaveManager.save_game()
+			break
 	$Confirm_Delete.visible = false
 	queue_free()
 

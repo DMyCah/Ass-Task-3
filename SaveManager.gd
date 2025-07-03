@@ -129,14 +129,15 @@ func filter_input_username(type,input):
 	if type == "username":
 		#Use seperate variables to check if any replacements were made and determine if return false
 		var input_before = input
+		if input.length() < 1 or input.length() > 20:
+			print("Invalid username")
+			return false
 		for i in invalid_characters_username:
 			input = input.replace(i, " ")
 			if input_before != input:
 				print("Invalid Characters")
 				return false
-		if input.length() < 1 or input.length() > 20:
-			print("Invalid username")
-			return false
+		
 	if type == "other":
 		#Use seperate variables to check if any replacements were made and determine if return false
 		var input_before = input
